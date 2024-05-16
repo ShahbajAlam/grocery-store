@@ -21,7 +21,7 @@ function ImageCarousel({ images }: { images: BannerImage[] }) {
                     <CarouselItem key={image._id}>
                         <img
                             src={image.src}
-                            className="w-full aspect-video rounded-2xl"
+                            className="w-full aspect-video rounded-2xl skeleton"
                             alt={image.name}
                         />
                     </CarouselItem>

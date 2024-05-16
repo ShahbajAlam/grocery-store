@@ -48,7 +48,7 @@ async function Navbar() {
                             className="rounded-full"
                         />
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="p-5 rounded-lg ">
+                    <DropdownMenuContent className="p-5 rounded-2xl">
                         <DropdownMenuLabel className="text-lg">
                             My Account
                         </DropdownMenuLabel>

@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     description: "Get a wide range of fresh groceries at your fingertips",
 };
 
+export const revalidate = 0;
+
 export default function RootLayout({
     children,
 }: Readonly<{

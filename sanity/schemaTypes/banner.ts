@@ -5,16 +5,18 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Name',
+      title: 'Title of the banner',
       type: 'string',
+      validation: (rule: any) => rule.required(),
     },
     {
       name: 'image',
-      title: 'image',
+      title: 'Banner Image',
       type: 'image',
       options: {
         hotspot: true,
       },
+      validation: (rule: any) => rule.required(),
     },
   ],
 }
