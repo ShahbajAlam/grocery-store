@@ -12,9 +12,9 @@ function ShowCategories({ categories }: { categories: string[] }) {
     }, [value]);
 
     return (
-        <div className="grid gap-2 grid-cols-4">
+        <div className="grid gap-2 grid-cols-3">
             {["all", ...categories].map((item) => (
-                <div key={item}>
+                <div key={item} className="bg-[#352433] rounded-lg p-4">
                     <input
                         hidden
                         type="radio"
@@ -26,12 +26,12 @@ function ShowCategories({ categories }: { categories: string[] }) {
                     />
                     <label htmlFor={item}>
                         <div
-                            className={`w-full aspect-square duration-200 ${value === item ? "brightness-50 scale-105" : ""}`}
+                            className={`w-full aspect-square duration-200 ${value === item ? "brightness-150 scale-105" : ""}`}
                         >
                             <img
-                                src="https://picsum.photos/100"
+                                src="/cat.webp"
                                 alt={`Category - ${item}`}
-                                className="w-full h-full object-cover skeleton"
+                                className="w-full h-full object-cover"
                             />
                         </div>
                         <h2 className="text-center text-lg font-bold">
