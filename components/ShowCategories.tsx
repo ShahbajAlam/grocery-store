@@ -26,17 +26,17 @@ function ShowCategories({ categories }: { categories: string[] }) {
                     />
                     <label htmlFor={item}>
                         <div
-                            className={`w-full aspect-square duration-200 ${value === item ? "brightness-50" : ""}`}
+                            className={`w-full aspect-square duration-200 ${value === item ? "brightness-50 scale-105" : ""}`}
                         >
                             <img
                                 src="https://picsum.photos/100"
                                 alt={`Category - ${item}`}
                                 className="w-full h-full object-cover skeleton"
                             />
-                            <h2 className="text-center text-lg font-bold">
-                                {item}
-                            </h2>
                         </div>
+                        <h2 className="text-center text-lg font-bold">
+                            {item}
+                        </h2>
                     </label>
                 </div>
             ))}

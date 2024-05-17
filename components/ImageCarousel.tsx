@@ -11,18 +11,21 @@ import { BannerImage } from "./BannerImages";
 function ImageCarousel({ images }: { images: BannerImage[] }) {
     return (
         <Carousel
-            plugins={[Autoplay({ delay: 4000 })]}
+            plugins={[Autoplay({ delay: 3000 })]}
             opts={{
                 loop: true,
             }}
         >
             <CarouselContent>
                 {images.map((image) => (
-                    <CarouselItem key={image._id}>
+                    <CarouselItem
+                        key={image._id}
+                        className="w-full aspect-video rounded-2xl"
+                    >
                         <img
                             src={image.src}
-                            className="w-full aspect-video rounded-2xl skeleton"
                             alt={image.name}
+                            className="w-full h-full skeleton object-cover"
                         />
                     </CarouselItem>
                 ))}
