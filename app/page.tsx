@@ -1,10 +1,11 @@
 import BannerImages from "@/components/BannerImages";
+import Categories from "@/components/Categories";
 
 export default async function Home() {
     return (
         <>
-            <h1>Welcome to grocery store</h1>
             <BannerImages />
+            <Categories />
         </>
     );
 }
