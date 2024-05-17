@@ -8,5 +8,6 @@ export type CategoryProps = {
 
 export default async function fetchAllCategories() {
     const response: CategoryProps[] = await client.fetch(query);
-    return response;
+    const categories = [...new Set(response.map((item) => item.category))];
+    return categories;
 }
