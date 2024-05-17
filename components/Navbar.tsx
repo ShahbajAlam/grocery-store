@@ -33,7 +33,9 @@ async function Navbar() {
             </Link>
             {!isAuth && (
                 <Button>
-                    <LoginLink className="bg-transparent">Log In</LoginLink>
+                    <LoginLink className="bg-transparent text-lg">
+                        Log In
+                    </LoginLink>
                 </Button>
             )}
 
