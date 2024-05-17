@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import Pagination from "./Pagination";
 import { urlFor } from "@/utils/urlFor";
@@ -22,22 +22,20 @@ function ShowProducts({
     const prevPageHandler = () => {
         setPage((oldPage) => {
             if (oldPage === firstPage) return oldPage;
-            else {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-                return oldPage - 1;
-            }
+            else return oldPage - 1;
         });
     };
 
     const nextPageHandler = () => {
         setPage((oldPage) => {
             if (oldPage === lastPage) return oldPage;
-            else {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-                return oldPage + 1;
-            }
+            else return oldPage + 1;
         });
     };
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [page]);
 
     return (
         <>
