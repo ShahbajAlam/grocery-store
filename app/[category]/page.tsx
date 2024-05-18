@@ -19,8 +19,16 @@ export default async function CategoryPage({ params }: CategoryParams) {
         productsQuery = `*[_type == "products"  && category == "${params.category}"]{_id, name, price, category, description, "image": image.asset._ref}`;
     }
 
-    const totalCount = await client.fetch(totalCountQuery);
-    const products = await client.fetch(productsQuery);
+    const totalCount = await client.fetch(
+        totalCountQuery,
+        {},
+        { next: { revalidate: 0 } }
+    );
+    const products = await client.fetch(
+        productsQuery,
+        {},
+        { next: { revalidate: 0 } }
+    );
 
     return <ShowProducts products={products} totalCount={totalCount} />;
 }

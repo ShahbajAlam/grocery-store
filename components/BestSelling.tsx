@@ -6,7 +6,11 @@ import { client } from "@/utils/sanityClient";
 
 async function BestSelling() {
     const query = `*[_type == "products" && bestselling == true]{_id, name, price, category, "image": image.asset._ref}`;
-    const bestselling: ProductsProps[] = await client.fetch(query);
+    const bestselling: ProductsProps[] = await client.fetch(
+        query,
+        {},
+        { next: { revalidate: 0 } }
+    );
 
     return (
         <>
@@ -31,8 +35,11 @@ async function BestSelling() {
                             {item.name}
                         </h1>
 
-                        <Link href={`/${item.category}/${item._id}`}>
-                            <Button className="my-2 text-md">
+                        <Link
+                            href={`/${item.category}/${item._id}`}
+                            className="my-2"
+                        >
+                            <Button className="text-md">
                                 See this product
                             </Button>
                         </Link>

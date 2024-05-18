@@ -11,7 +11,11 @@ type ProductsParams = {
 
 export default async function ProductPage({ params }: ProductsParams) {
     const query = `*[_type == "products" && _id == "${params.id}"]{_id, name, price, category, description, "image": image.asset._ref}[0]`;
-    const product: ProductsProps = await client.fetch(query);
+    const product: ProductsProps = await client.fetch(
+        query,
+        {},
+        { next: { revalidate: 0 } }
+    );
 
     return (
         <div className="px-4 py-2">

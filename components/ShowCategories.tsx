@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 function ShowCategories({ categories }: { categories: string[] }) {
-    console.log(categories);
     return (
         <div className="grid gap-2 grid-cols-3">
             <Link

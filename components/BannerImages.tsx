@@ -13,7 +13,11 @@ export type BannerImage = {
 };
 
 async function BannerImages() {
-    const data: BannerImage[] = await client.fetch(query);
+    const data: BannerImage[] = await client.fetch(
+        query,
+        {},
+        { next: { revalidate: 0 } }
+    );
     const images: BannerImage[] = data.map((image) => ({
         _id: image._id,
         name: image.name,
