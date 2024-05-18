@@ -1,6 +1,7 @@
 import { urlFor } from "@/utils/urlFor";
 import { ProductsProps } from "@/types";
 import { client } from "@/utils/sanityClient";
+import AddToCartButton from "@/components/AddToCartButton";
 
 type ProductsParams = {
     params: {
@@ -25,6 +26,8 @@ export default async function ProductPage({ params }: ProductsParams) {
 
             <h1 className="text-4xl my-5 font-bold">{product.name}</h1>
             <p className="text-lg my-2">{product.description}</p>
+
+            <AddToCartButton product={product} />
         </div>
     );
 }
