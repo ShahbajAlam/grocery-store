@@ -32,11 +32,9 @@ async function Navbar() {
                 />
             </Link>
             {!isAuth && (
-                <Button>
-                    <LoginLink className="bg-transparent text-lg">
-                        Log In
-                    </LoginLink>
-                </Button>
+                <LoginLink className="bg-[#c59f60] text-black hover:bg-[#c59f60]/90 text-lg px-4 py-2 rounded-md font-semibold">
+                    Log In
+                </LoginLink>
             )}
 
             {isAuth && (
