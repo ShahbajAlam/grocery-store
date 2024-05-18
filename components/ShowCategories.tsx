@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 function ShowCategories({ categories }: { categories: string[] }) {
+    console.log(categories);
     return (
         <div className="grid gap-2 grid-cols-3">
             <Link
@@ -28,7 +29,7 @@ function ShowCategories({ categories }: { categories: string[] }) {
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <h2 className="text-center text-lg font-bold">
+                        <h2 className="text-center text-md font-semibold mt-2 uppercase">
                             {item}
                         </h2>
                     </div>

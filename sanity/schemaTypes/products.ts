@@ -29,7 +29,7 @@ export default {
         list: [
           {title: 'Fruit', value: 'fruit'},
           {title: 'Vegetable', value: 'vegetable'},
-          {title: 'Non-veg', value: 'non-veg'},
+          {title: 'Nonveg', value: 'nonveg'},
           {title: 'Dairy', value: 'dairy'},
           {title: 'Bakery', value: 'bakery'},
           {title: 'Beverage', value: 'beverage'},
