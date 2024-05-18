@@ -1,5 +1,5 @@
 export default {
-  name: 'products',
+  name: 'bestselling',
   type: 'document',
   fields: [
     {
@@ -41,6 +41,12 @@ export default {
       name: 'image',
       title: 'Image of the product',
       type: 'image',
+      validation: (rule: any) => rule.required(),
+    },
+    {
+      name: 'refID',
+      title: 'Reference ID',
+      type: 'string',
       validation: (rule: any) => rule.required(),
     },
   ],

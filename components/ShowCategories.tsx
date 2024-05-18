@@ -3,12 +3,26 @@ import Link from "next/link";
 function ShowCategories({ categories }: { categories: string[] }) {
     return (
         <div className="grid gap-2 grid-cols-3">
-            {["all", ...categories].map((item) => (
-                <Link href={`/${item}`} key={item}>
+            <Link
+                href="/all"
+                className="hover:brightness-150 hover:scale-105 duration-200"
+            >
+                <div className="bg-[#352433] rounded-lg p-4 h-full flex justify-center items-center">
+                    <h2 className="text-center text-lg font-bold">
+                        All Products
+                    </h2>
+                </div>
+            </Link>
+            {categories.map((item) => (
+                <Link
+                    href={`/${item}`}
+                    key={item}
+                    className="hover:brightness-150 hover:scale-105 duration-200"
+                >
                     <div className="bg-[#352433] rounded-lg p-4">
                         <div className="w-full aspect-square">
                             <img
-                                src="/cat.webp"
+                                src={`${item}.webp`}
                                 alt={`Category - ${item}`}
                                 loading="lazy"
                                 className="w-full h-full object-cover"

@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import Pagination from "./Pagination";
 import { urlFor } from "@/utils/urlFor";
-import { ProductsProps } from "@/contexts/ProductsContext";
+import { ProductsProps } from "@/types";
+import { useEffect, useState } from "react";
 
 function ShowProducts({
     products,
@@ -61,9 +61,14 @@ function ShowProducts({
                             <h2>&#x20B9;{item.price}</h2>
                         </div>
 
-                        <Button className="self-end my-2 text-lg">
-                            See this product
-                        </Button>
+                        <Link
+                            href={`/${item.category}/${item._id}`}
+                            className="self-end  my-2"
+                        >
+                            <Button className="font-semibold text-lg">
+                                See this product
+                            </Button>
+                        </Link>
                     </div>
                 ))}
             </div>
