@@ -25,6 +25,7 @@ function ImageCarousel({ images }: { images: BannerImage[] }) {
                         <img
                             src={image.src}
                             alt={image.name}
+                            loading="lazy"
                             className="w-full h-full skeleton object-cover"
                         />
                     </CarouselItem>

@@ -52,6 +52,7 @@ function ShowProducts({
                             <img
                                 src={urlFor(item.image).url()}
                                 alt={item.name}
+                                loading="lazy"
                             />
                         </div>
 
