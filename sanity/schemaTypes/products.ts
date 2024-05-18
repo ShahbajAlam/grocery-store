@@ -43,5 +43,13 @@ export default {
       type: 'image',
       validation: (rule: any) => rule.required(),
     },
+    {
+      name: 'bestselling',
+      title: 'Is it a bestselling product?',
+      type: 'boolean',
+    },
   ],
+  initialValue: {
+    bestselling: false,
+  },
 }
