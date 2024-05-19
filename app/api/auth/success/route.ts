@@ -8,6 +8,9 @@ export async function GET() {
     const user = await getUser();
     const REDIRECT_URL = `${process.env.KINDE_SITE_URL}/myprofile`;
 
+    if (!user)
+        return NextResponse.redirect(process.env.KINDE_SITE_URL as string);
+
     try {
         connectDB();
         const userExists = await Users.findOne({ email: user?.email }).select(
