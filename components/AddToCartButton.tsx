@@ -9,6 +9,7 @@ import showToast from "@/utils/showToast";
 
 function AddToCartButton({ product }: { product: ProductsProps }) {
     const [count, setCount] = useState(1);
+    const [loading, setLoading] = useState(false);
     const { isAuthenticated, getUser } = useKindeBrowserClient();
     const user = getUser();
     const email = user?.email as string;
@@ -34,6 +35,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
                 message: "Please log in to your account first",
             });
         else {
+            setLoading(true);
             const cartItems = [
                 {
                     productID: product._id,
@@ -51,6 +53,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
                     type: "error",
                     message: "Could not add to the cart",
                 });
+            setLoading(false);
         }
     };
 
@@ -86,7 +89,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
                 className="w-full text-black hover:bg-[#c59f60]/90 text-lg px-4 py-2 rounded-md font-semibold my-4"
                 onClick={handleAddToCart}
             >
-                Add to cart
+                {loading ? "Adding to cart..." : "Add to cart"}
             </Button>
         </>
     );
