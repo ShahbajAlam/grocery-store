@@ -26,9 +26,8 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
     };
 
     const handleAddToCart = () => {
-        if (!isAuthenticated) {
-            showToast();
-        } else {
+        if (!isAuthenticated) showToast();
+        else {
             const cartItems = [
                 {
                     productID: product._id,
