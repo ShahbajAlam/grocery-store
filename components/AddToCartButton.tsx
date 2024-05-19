@@ -37,7 +37,11 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
                     productPrice: product.price,
                 },
             ];
-            await addToCart(email, cartItems);
+            if (await addToCart(email, cartItems)) {
+                console.log("Success");
+            } else {
+                console.log("Not added");
+            }
         }
     };
 
