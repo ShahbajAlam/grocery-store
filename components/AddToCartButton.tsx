@@ -30,6 +30,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
     const handleAddToCart = () => {
         if (!isAuthenticated) showToast();
         else {
+            console.log("OKK");
             const cartItems = [
                 {
                     productID: product._id,
@@ -37,6 +38,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
                     productPrice: product.price,
                 },
             ];
+            console.log(email, cartItems);
             addToCart(email, cartItems);
         }
     };
