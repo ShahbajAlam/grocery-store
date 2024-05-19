@@ -6,10 +6,13 @@ export default function showToast() {
         id: Date.now().toString(),
         position: "top-center",
         style: {
-            borderRadius: 8,
+            borderRadius: 16,
             fontWeight: "bold",
             textAlign: "center",
-            paddingInline: 8,
+            textWrap: "balance",
+            paddingInline: 10,
+            paddingBlock: 6,
+            fontSize: 20,
         },
     });
 }
