@@ -10,6 +10,8 @@ import showToast from "@/utils/showToast";
 function AddToCartButton({ product }: { product: ProductsProps }) {
     const [count, setCount] = useState(1);
     const { isAuthenticated, getUser } = useKindeBrowserClient();
+    const user = getUser();
+    const email = user?.email as string;
 
     const decreaseCount = () => {
         setCount((oldCount) => {
@@ -35,7 +37,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
                     productPrice: product.price,
                 },
             ];
-            addToCart(getUser()?.email as string, cartItems);
+            addToCart(email, cartItems);
         }
     };
 
