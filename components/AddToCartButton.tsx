@@ -90,7 +90,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
                 onClick={handleAddToCart}
             >
                 {loading ? (
-                    <span className="loading loading-spinner text-info" />
+                    <span className="loading loading-spinner text-neutral" />
                 ) : (
                     "Add to cart"
                 )}
