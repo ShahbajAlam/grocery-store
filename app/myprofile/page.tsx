@@ -1,5 +1,6 @@
-import addUser from "@/DB/addUser";
+import { CartProps } from "@/types";
 import { redirect } from "next/navigation";
+import fetchCartDetails from "@/DB/fetchCartDetails";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export default async function ProfilePage() {
@@ -10,7 +11,7 @@ export default async function ProfilePage() {
     }
 
     const user = await getUser();
-    addUser(user?.email as string);
+    const cart = (await fetchCartDetails(user?.email as string)) as CartProps[];
 
     return (
         <>

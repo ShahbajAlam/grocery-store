@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "./ui/button";
 import {
     LoginLink,
     LogoutLink,
@@ -48,17 +47,19 @@ async function Navbar() {
                             className="rounded-full"
                         />
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="p-5 rounded-2xl">
+                    <DropdownMenuContent
+                        className="p-5 rounded-xl mr-4"
+                        sideOffset={20}
+                    >
                         <DropdownMenuLabel className="text-lg">
                             My Account
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem className="text-lg">
-                            <Link href="/myprofile">Profile</Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="text-lg">
-                            Orders
-                        </DropdownMenuItem>
+                        <Link href="/myprofile">
+                            <DropdownMenuItem className="text-lg">
+                                Profile
+                            </DropdownMenuItem>
+                        </Link>
                         <DropdownMenuItem className="text-lg">
                             <LogoutLink>Log Out</LogoutLink>
                         </DropdownMenuItem>

@@ -29,6 +29,9 @@ export default async function ProductPage({ params }: ProductsParams) {
             </div>
 
             <h1 className="text-4xl my-5 font-bold">{product.name}</h1>
+
+            <h2 className="text-3xl font-bold">&#x20B9;{product.price}</h2>
+
             <p className="text-lg my-2">{product.description}</p>
 
             <AddToCartButton product={product} />

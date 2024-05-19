@@ -6,3 +6,9 @@ export type ProductsProps = {
     image: string;
     description: string;
 };
+
+export type CartProps = {
+    productID: string;
+    productCount: number;
+    productPrice: number;
+};

@@ -35,6 +35,10 @@ async function BestSelling() {
                             {item.name}
                         </h1>
 
+                        <h2 className="text-lg font-semibold text-center">
+                            &#x20B9;{item.price}
+                        </h2>
+
                         <Link
                             href={`/${item.category}/${item._id}`}
                             className="my-2"
