@@ -28,7 +28,11 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
     };
 
     const handleAddToCart = async () => {
-        if (!isAuthenticated) showToast();
+        if (!isAuthenticated)
+            showToast({
+                type: "error",
+                message: "Please log in to your account first",
+            });
         else {
             const cartItems = [
                 {
@@ -37,11 +41,16 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
                     productPrice: product.price,
                 },
             ];
-            if (await addToCart(email, cartItems)) {
-                console.log("Success");
-            } else {
-                console.log("Not added");
-            }
+            if (await addToCart(email, cartItems))
+                showToast({
+                    type: "success",
+                    message: `${product.name} is added to the cart`,
+                });
+            else
+                showToast({
+                    type: "error",
+                    message: "Could not add to the cart",
+                });
         }
     };
 

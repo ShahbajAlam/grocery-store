@@ -1,7 +1,12 @@
 import toast from "react-hot-toast";
 
-export default function showToast() {
-    toast.error("Please log in to your account to continue", {
+type ToastProps = {
+    type: "error" | "success";
+    message: string;
+};
+
+export default function showToast({ type, message }: ToastProps) {
+    toast[type](message, {
         duration: 2500,
         id: Date.now().toString(),
         position: "top-center",
@@ -12,7 +17,7 @@ export default function showToast() {
             textWrap: "balance",
             paddingInline: 10,
             paddingBlock: 6,
-            fontSize: 20,
+            fontSize: 16,
         },
     });
 }
