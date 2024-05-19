@@ -27,10 +27,9 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
         });
     };
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async () => {
         if (!isAuthenticated) showToast();
         else {
-            console.log("OKK");
             const cartItems = [
                 {
                     productID: product._id,
@@ -38,8 +37,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
                     productPrice: product.price,
                 },
             ];
-            console.log(email, cartItems);
-            addToCart(email, cartItems);
+            await addToCart(email, cartItems);
         }
     };
 
