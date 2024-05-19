@@ -4,7 +4,6 @@ const UsersModel = new Schema(
     {
         email: {
             type: String,
-            required: true,
         },
         name: {
             type: String,
