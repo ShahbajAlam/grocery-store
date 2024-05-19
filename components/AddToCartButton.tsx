@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { ProductsProps } from "@/types";
 import addToCart from "@/DB/addToCart";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import showToast from "@/utils/showToast";
 
 function AddToCartButton({ product }: { product: ProductsProps }) {
     const [count, setCount] = useState(1);
@@ -26,6 +27,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
 
     const handleAddToCart = () => {
         if (!isAuthenticated) {
+            showToast();
         } else {
             const cartItems = [
                 {

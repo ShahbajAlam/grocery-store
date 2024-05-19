@@ -9,17 +9,15 @@ export async function GET() {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
 
-    if (!user) throw new Error("Something went wrong with authentication");
-
     try {
         connectDB();
-        const userExists = await Users.findOne({ email: user.email }).select(
+        const userExists = await Users.findOne({ email: user?.email }).select(
             "_id"
         );
         if (!userExists) {
             await Users.create({
-                email: user.email,
-                name: `${user.given_name} ${user.family_name}`,
+                email: user?.email,
+                name: `${user?.given_name} ${user?.family_name}`,
             });
         }
         return NextResponse.redirect(REDIRECT_URL);
