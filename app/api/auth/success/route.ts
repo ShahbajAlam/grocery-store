@@ -3,11 +3,10 @@ import { NextResponse } from "next/server";
 import { Users } from "@/DB/models/UsersModel";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-const REDIRECT_URL = `${process.env.KINDE_SITE_URL}/myprofile`;
-
 export async function GET() {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
+    const REDIRECT_URL = `${process.env.KINDE_SITE_URL}/myprofile`;
 
     try {
         connectDB();
