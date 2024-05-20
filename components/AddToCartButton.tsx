@@ -44,7 +44,10 @@ function AddToCartButton({ product, isAuth, user }: AddToCartButtonProps) {
         const cartItem = {
             productID: product._id,
             productCount: count,
+            productName: product.name,
+            productImage: product.image,
             productPrice: product.price,
+            productCategory: product.category,
         };
 
         try {

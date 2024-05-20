@@ -9,6 +9,9 @@ export type ProductsProps = {
 
 export type CartProps = {
     productID: string;
+    productName: string;
+    productImage: string;
     productCount: number;
     productPrice: number;
+    productCategory: string;
 };

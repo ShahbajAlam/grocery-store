@@ -12,8 +12,11 @@ const UsersModel = new Schema(
             type: [
                 {
                     productID: String,
+                    productName: String,
+                    productImage: String,
                     productCount: Number,
                     productPrice: Number,
+                    productCategory: String,
                 },
             ],
         },
