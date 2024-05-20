@@ -1,18 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { CartProps } from "@/types";
 import { urlFor } from "@/utils/urlFor";
 import { Trash2Icon } from "lucide-react";
-import removeFromCart from "@/DB/removeFromCart";
 
 function CartItem({ item, email }: { item: CartProps; email: string }) {
-    
-    const handleRemoveFromCart = async () => {
-        const res = await removeFromCart(email, item.productID);
-    };
-
     return (
         <li className="flex justify-between items-center p-4 rounded-md bg-[#352433]">
             <div className="flex justify-center items-center gap-4">
@@ -24,6 +16,7 @@ function CartItem({ item, email }: { item: CartProps; email: string }) {
                         src={urlFor(item.productImage).url()}
                         width={100}
                         height={100}
+                        priority
                         alt={item.productName}
                     />
                 </Link>
@@ -38,7 +31,7 @@ function CartItem({ item, email }: { item: CartProps; email: string }) {
                 </div>
             </div>
 
-            <Trash2Icon onClick={handleRemoveFromCart} />
+            <Trash2Icon role="button" />
         </li>
     );
 }
