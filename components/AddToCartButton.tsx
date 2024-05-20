@@ -4,15 +4,18 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { ProductsProps } from "@/types";
 import addToCart from "@/DB/addToCart";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import showToast from "@/utils/showToast";
+import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 
-function AddToCartButton({ product }: { product: ProductsProps }) {
+type AddToCartButtonProps = {
+    product: ProductsProps;
+    isAuth: boolean;
+    user: KindeUser | null;
+};
+
+function AddToCartButton({ product, isAuth, user }: AddToCartButtonProps) {
     const [count, setCount] = useState(1);
     const [loading, setLoading] = useState(false);
-    const { isAuthenticated, getUser } = useKindeBrowserClient();
-    const user = getUser();
-    const email = user?.email as string;
 
     const decreaseCount = () => {
         setCount((oldCount) => {
@@ -29,7 +32,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
     };
 
     const handleAddToCart = async () => {
-        if (!isAuthenticated)
+        if (!isAuth)
             showToast({
                 type: "error",
                 message: "Please log in to your account first",
@@ -43,7 +46,7 @@ function AddToCartButton({ product }: { product: ProductsProps }) {
                     productPrice: product.price,
                 },
             ];
-            if (await addToCart(email, cartItems))
+            if (await addToCart(user?.email as string, cartItems))
                 showToast({
                     type: "success",
                     message: `${product.name} is added to the cart`,

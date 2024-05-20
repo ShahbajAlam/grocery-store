@@ -1,6 +1,7 @@
 import { urlFor } from "@/utils/urlFor";
 import { ProductsProps } from "@/types";
 import { client } from "@/utils/sanityClient";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import AddToCartButton from "@/components/AddToCartButton";
 
 type ProductsParams = {
@@ -16,6 +17,10 @@ export default async function ProductPage({ params }: ProductsParams) {
         {},
         { next: { revalidate: 0 } }
     );
+
+    const { isAuthenticated, getUser } = getKindeServerSession();
+    const isAuth = await isAuthenticated();
+    const user = await getUser();
 
     return (
         <div className="px-4 py-2">
@@ -34,7 +39,7 @@ export default async function ProductPage({ params }: ProductsParams) {
 
             <p className="text-lg my-2">{product.description}</p>
 
-            <AddToCartButton product={product} />
+            <AddToCartButton product={product} isAuth={isAuth} user={user} />
         </div>
     );
 }
