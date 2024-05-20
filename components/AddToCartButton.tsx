@@ -39,14 +39,12 @@ function AddToCartButton({ product, isAuth, user }: AddToCartButtonProps) {
             });
         else {
             setLoading(true);
-            const cartItems = [
-                {
-                    productID: product._id,
-                    productCount: count,
-                    productPrice: product.price,
-                },
-            ];
-            if (await addToCart(user?.email as string, cartItems))
+            const cartItem = {
+                productID: product._id,
+                productCount: count,
+                productPrice: product.price,
+            };
+            if (await addToCart(user?.email as string, cartItem))
                 showToast({
                     type: "success",
                     message: `${product.name} is added to the cart`,
