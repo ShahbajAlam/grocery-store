@@ -12,7 +12,7 @@ export default async function addToCart(email: string, cartItem: CartProps) {
         cart = cart?.filter((item) => item.productID !== cartItem.productID);
         cart = [...cart, cartItem];
 
-        if (cart.length === 11) return { type: "max" };
+        if (cart.length === 11) return { type: "max_limit" };
 
         const doc = await Users.findOneAndUpdate(
             { email },

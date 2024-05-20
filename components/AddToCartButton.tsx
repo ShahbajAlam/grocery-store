@@ -47,35 +47,37 @@ function AddToCartButton({ product, isAuth, user }: AddToCartButtonProps) {
             productPrice: product.price,
         };
 
-        const response = (await addToCart(user?.email as string, cartItem)) as {
-            type: string | boolean;
-        };
+        try {
+            const response = (await addToCart(
+                user?.email as string,
+                cartItem
+            )) as {
+                type: string | boolean;
+            };
 
-        if (response.type === true) {
-            showToast({
-                type: "success",
-                message: `${product.name} (x${count}) is added to the cart`,
-            });
-            setLoading(false);
-            return;
-        }
+            if (!response) throw new Error("Could not add to the cart");
 
-        if (response.type === false) {
-            showToast({
-                type: "error",
-                message: "Could not add to the cart",
-            });
+            if (response.type === true) {
+                showToast({
+                    type: "success",
+                    message: `${product.name} (x${count}) is added to the cart`,
+                });
+            } else if (response.type === false) {
+                showToast({
+                    type: "error",
+                    message: "Could not add to the cart",
+                });
+            } else {
+                showToast({
+                    type: "error",
+                    message: "Only 10 items are allowed in the cart once",
+                });
+            }
+        } catch (error) {
+            if (error instanceof Error)
+                showToast({ type: "error", message: error.message });
+        } finally {
             setLoading(false);
-            return;
-        }
-
-        if (response.type === "max") {
-            showToast({
-                type: "error",
-                message: "Only 10 items are allowed in the cart once",
-            });
-            setLoading(false);
-            return;
         }
     };
 
