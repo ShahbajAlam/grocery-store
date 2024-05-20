@@ -32,29 +32,50 @@ function AddToCartButton({ product, isAuth, user }: AddToCartButtonProps) {
     };
 
     const handleAddToCart = async () => {
-        if (!isAuth)
+        if (!isAuth) {
             showToast({
                 type: "error",
                 message: "Please log in to your account first",
             });
-        else {
-            setLoading(true);
-            const cartItem = {
-                productID: product._id,
-                productCount: count,
-                productPrice: product.price,
-            };
-            if (await addToCart(user?.email as string, cartItem))
-                showToast({
-                    type: "success",
-                    message: `${product.name} is added to the cart`,
-                });
-            else
-                showToast({
-                    type: "error",
-                    message: "Could not add to the cart",
-                });
+            return;
+        }
+
+        setLoading(true);
+        const cartItem = {
+            productID: product._id,
+            productCount: count,
+            productPrice: product.price,
+        };
+
+        const response = (await addToCart(user?.email as string, cartItem)) as {
+            type: string | boolean;
+        };
+
+        if (response.type === true) {
+            showToast({
+                type: "success",
+                message: `${product.name} (x${count}) is added to the cart`,
+            });
             setLoading(false);
+            return;
+        }
+
+        if (response.type === false) {
+            showToast({
+                type: "error",
+                message: "Could not add to the cart",
+            });
+            setLoading(false);
+            return;
+        }
+
+        if (response.type === "max") {
+            showToast({
+                type: "error",
+                message: "Only 10 items are allowed in the cart once",
+            });
+            setLoading(false);
+            return;
         }
     };
 

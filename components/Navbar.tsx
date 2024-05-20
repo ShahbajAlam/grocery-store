@@ -60,6 +60,11 @@ async function Navbar() {
                                 Profile
                             </DropdownMenuItem>
                         </Link>
+                        <Link href="/mycart">
+                            <DropdownMenuItem className="text-lg">
+                                Cart
+                            </DropdownMenuItem>
+                        </Link>
                         <DropdownMenuItem className="text-lg">
                             <LogoutLink>Log Out</LogoutLink>
                         </DropdownMenuItem>
