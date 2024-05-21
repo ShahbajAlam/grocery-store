@@ -7,7 +7,7 @@ import fetchCartDetails from "./fetchCartDetails";
 
 export default async function addToCart(email: string, cartItem: CartProps) {
     try {
-        connectDB();
+        await connectDB();
 
         let cart = (await fetchCartDetails(email)) as CartProps[];
         cart = cart?.filter((item) => item.productID !== cartItem.productID);

@@ -5,7 +5,7 @@ import fetchCartDetails from "./fetchCartDetails";
 
 export default async function removeFromCart(email: string, productID: string) {
     try {
-        connectDB();
+        await connectDB();
 
         let cart = (await fetchCartDetails(email)) as CartProps[];
         cart = cart.filter((item) => item.productID !== productID);
