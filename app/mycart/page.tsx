@@ -1,6 +1,6 @@
 import { CartProps } from "@/types";
 import { redirect } from "next/navigation";
-import CartItem from "@/components/CartItem";
+import CartItems from "@/components/CartItems";
 import fetchCartDetails from "@/DB/fetchCartDetails";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
@@ -20,15 +20,10 @@ export default async function ProfilePage() {
                 My cart
             </h1>
 
-            <ul className="flex flex-col gap-3 rounded-lg">
-                {cart.map((item) => (
-                    <CartItem
-                        key={item.productID}
-                        item={item}
-                        email={user?.email as string}
-                    />
-                ))}
-            </ul>
+            <CartItems
+                data={JSON.stringify(cart)}
+                email={user?.email as string}
+            />
         </div>
     );
 }
