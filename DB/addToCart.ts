@@ -21,7 +21,7 @@ export default async function addToCart(email: string, cartItem: CartProps) {
             { $set: { cart } }
         ).select("_id");
 
-        revalidatePath("/", "layout");
+        revalidatePath("/mycart", "page");
 
         if (!doc.id) return { type: false };
         return { type: true };

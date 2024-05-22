@@ -18,7 +18,7 @@ export default async function removeFromCart(email: string, productID: string) {
             { $set: { cart } }
         ).select("_id");
 
-        revalidatePath("/", "layout");
+        revalidatePath("/mycart", "page");
 
         if (!doc.id) return false;
         return true;
