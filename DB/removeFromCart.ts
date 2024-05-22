@@ -2,9 +2,9 @@
 
 import { CartProps } from "@/types";
 import connectDB from "./connection";
+import { revalidatePath } from "next/cache";
 import { Users } from "./models/UsersModel";
 import fetchCartDetails from "./fetchCartDetails";
-import { revalidatePath } from "next/cache";
 
 export default async function removeFromCart(email: string, productID: string) {
     try {
@@ -17,6 +17,8 @@ export default async function removeFromCart(email: string, productID: string) {
             { email },
             { $set: { cart } }
         ).select("_id");
+
+        revalidatePath("/mycart", "page");
 
         if (!doc.id) return false;
         return true;

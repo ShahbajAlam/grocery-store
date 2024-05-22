@@ -2,6 +2,7 @@
 
 import { CartProps } from "@/types";
 import connectDB from "./connection";
+import { revalidatePath } from "next/cache";
 import { Users } from "./models/UsersModel";
 import fetchCartDetails from "./fetchCartDetails";
 
@@ -19,6 +20,8 @@ export default async function addToCart(email: string, cartItem: CartProps) {
             { email },
             { $set: { cart } }
         ).select("_id");
+
+        revalidatePath("/mycart", "page");
 
         if (!doc.id) return { type: false };
         return { type: true };
