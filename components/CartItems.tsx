@@ -63,7 +63,7 @@ function CartItems({ data, email }: { data: string; email: string }) {
             </div>
 
             {loading ? (
-                <span className="loading loading-spinner text-neutral w-8 h-8" />
+                <span className="loading loading-spinner text-info w-8 h-8" />
             ) : (
                 <Trash2Icon
                     role="button"
