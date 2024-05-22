@@ -47,7 +47,7 @@ function CartItems({ data, email }: { data: string; email: string }) {
                         src={urlFor(item.productImage).url()}
                         width={100}
                         height={100}
-                        priority
+                        loading="lazy"
                         alt={item.productName}
                     />
                 </Link>
