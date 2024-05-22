@@ -16,7 +16,7 @@ async function BannerImages() {
     const data: BannerImage[] = await client.fetch(
         query,
         {},
-        { next: { revalidate: 0 } }
+        { next: { revalidate: 120 } }
     );
     const images: BannerImage[] = data.map((image) => ({
         _id: image._id,

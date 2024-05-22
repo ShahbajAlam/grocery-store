@@ -9,7 +9,7 @@ async function BestSelling() {
     const bestselling: ProductsProps[] = await client.fetch(
         query,
         {},
-        { next: { revalidate: 0 } }
+        { next: { revalidate: 120 } }
     );
 
     return (

@@ -11,7 +11,7 @@ async function Categories() {
     const response: CategoryProps[] = await client.fetch(
         query,
         {},
-        { next: { revalidate: 0 } }
+        { next: { revalidate: 120 } }
     );
     const categories = [...new Set(response.map((item) => item.category))];
 
