@@ -27,10 +27,15 @@ export default async function ProfilePage() {
                 My cart
             </h1>
 
-            <CartItems
-                data={JSON.stringify(cart)}
-                email={user?.email as string}
-            />
+            <ul className="flex flex-col gap-3 rounded-lg">
+                {cart.map((item) => (
+                    <CartItems
+                        key={item.productID}
+                        data={JSON.stringify(item)}
+                        email={user?.email as string}
+                    />
+                ))}
+            </ul>
         </div>
     );
 }

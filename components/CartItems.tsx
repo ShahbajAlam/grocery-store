@@ -10,16 +10,12 @@ import removeFromCart from "@/DB/removeFromCart";
 import { Loader2Icon, Trash2Icon } from "lucide-react";
 
 function CartItems({ data, email }: { data: string; email: string }) {
+    const item = JSON.parse(data) as CartProps;
     const [loading, setLoading] = useState(false);
-    const [items, setItems] = useState(() => JSON.parse(data) as CartProps[]);
 
     const handleRemove = async (productID: string, productName: string) => {
         try {
             setLoading(true);
-            const updatedItems = items.filter(
-                (item) => item.productID !== productID
-            );
-            setItems(updatedItems);
             const removed = await removeFromCart(email, productID);
             if (!removed) {
                 showToast({
@@ -38,52 +34,48 @@ function CartItems({ data, email }: { data: string; email: string }) {
     };
 
     return (
-        <ul className="flex flex-col gap-3 rounded-lg">
-            {items.map((item) => (
-                <li
-                    key={item.productID}
-                    className="flex justify-between items-center p-4 rounded-md bg-[#352433]"
+        <li
+            key={item.productID}
+            className="flex justify-between items-center p-4 rounded-md bg-[#352433]"
+        >
+            <div className="flex justify-center items-center gap-4">
+                <Link
+                    legacyBehavior
+                    href={`/${item.productCategory}/${item.productID}`}
                 >
-                    <div className="flex justify-center items-center gap-4">
-                        <Link
-                            legacyBehavior
-                            href={`/${item.productCategory}/${item.productID}`}
-                        >
-                            <Image
-                                src={urlFor(item.productImage).url()}
-                                width={100}
-                                height={100}
-                                priority
-                                alt={item.productName}
-                            />
-                        </Link>
+                    <Image
+                        src={urlFor(item.productImage).url()}
+                        width={100}
+                        height={100}
+                        priority
+                        alt={item.productName}
+                    />
+                </Link>
 
-                        <div>
-                            <h2 className="text-lg font-bold">
-                                {item.productName} (x{item.productCount})
-                            </h2>
-                            <h2 className="text-lg font-bold">
-                                &#x20B9;{item.productPrice * item.productCount}
-                            </h2>
-                        </div>
-                    </div>
+                <div>
+                    <h2 className="text-lg font-bold">
+                        {item.productName} (x{item.productCount})
+                    </h2>
+                    <h2 className="text-lg font-bold">
+                        &#x20B9;{item.productPrice * item.productCount}
+                    </h2>
+                </div>
+            </div>
 
-                    {loading ? (
-                        <Loader2Icon className="w-8 h-8" />
-                    ) : (
-                        <Trash2Icon
-                            role="button"
-                            className="w-8 h-8"
-                            onClick={handleRemove.bind(
-                                null,
-                                item.productID,
-                                item.productName
-                            )}
-                        />
+            {loading ? (
+                <span className="loading loading-spinner text-neutral w-8 h-8" />
+            ) : (
+                <Trash2Icon
+                    role="button"
+                    className="w-8 h-8"
+                    onClick={handleRemove.bind(
+                        null,
+                        item.productID,
+                        item.productName
                     )}
-                </li>
-            ))}
-        </ul>
+                />
+            )}
+        </li>
     );
 }
 
