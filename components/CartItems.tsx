@@ -2,27 +2,38 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { CartProps } from "@/types";
 import { urlFor } from "@/utils/urlFor";
-import { Trash2Icon } from "lucide-react";
-import { useState } from "react";
-import removeFromCart from "@/DB/removeFromCart";
 import showToast from "@/utils/showToast";
+import removeFromCart from "@/DB/removeFromCart";
+import { Loader2Icon, Trash2Icon } from "lucide-react";
 
 function CartItems({ data, email }: { data: string; email: string }) {
+    const [loading, setLoading] = useState(false);
     const [items, setItems] = useState(() => JSON.parse(data) as CartProps[]);
 
     const handleRemove = async (productID: string, productName: string) => {
-        const updatedItems = items.filter(
-            (item) => item.productID !== productID
-        );
-        setItems(updatedItems);
-        const removed = await removeFromCart(email, productID);
-        if (!removed) {
+        try {
+            setLoading(true);
+            const updatedItems = items.filter(
+                (item) => item.productID !== productID
+            );
+            setItems(updatedItems);
+            const removed = await removeFromCart(email, productID);
+            if (!removed) {
+                showToast({
+                    type: "error",
+                    message: `Could not remove ${productName} from cart`,
+                });
+            }
+        } catch (error) {
             showToast({
                 type: "error",
                 message: `Could not remove ${productName} from cart`,
             });
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -57,15 +68,19 @@ function CartItems({ data, email }: { data: string; email: string }) {
                         </div>
                     </div>
 
-                    <Trash2Icon
-                        role="button"
-                        className="w-8 h-8"
-                        onClick={handleRemove.bind(
-                            null,
-                            item.productID,
-                            item.productName
-                        )}
-                    />
+                    {loading ? (
+                        <Loader2Icon className="w-8 h-8" />
+                    ) : (
+                        <Trash2Icon
+                            role="button"
+                            className="w-8 h-8"
+                            onClick={handleRemove.bind(
+                                null,
+                                item.productID,
+                                item.productName
+                            )}
+                        />
+                    )}
                 </li>
             ))}
         </ul>
