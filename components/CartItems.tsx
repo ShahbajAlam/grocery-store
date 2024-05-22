@@ -5,9 +5,9 @@ import Image from "next/image";
 import { useState } from "react";
 import { CartProps } from "@/types";
 import { urlFor } from "@/utils/urlFor";
+import { Trash2Icon } from "lucide-react";
 import showToast from "@/utils/showToast";
 import removeFromCart from "@/DB/removeFromCart";
-import { Loader2Icon, Trash2Icon } from "lucide-react";
 
 function CartItems({ data, email }: { data: string; email: string }) {
     const item = JSON.parse(data) as CartProps;
