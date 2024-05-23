@@ -5,8 +5,8 @@ import {
     CarouselContent,
     CarouselItem,
 } from "@/components/ui/carousel";
+import { BannerImage } from "@/types";
 import Autoplay from "embla-carousel-autoplay";
-import { BannerImage } from "./BannerImages";
 
 function ImageCarousel({ images }: { images: BannerImage[] }) {
     return (
