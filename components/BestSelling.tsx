@@ -2,16 +2,8 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { urlFor } from "@/utils/urlFor";
 import { ProductsProps } from "@/types";
-import { client } from "@/utils/sanityClient";
 
-async function BestSelling() {
-    const query = `*[_type == "products" && bestselling == true]{_id, name, price, category, "image": image.asset._ref}`;
-    const bestselling: ProductsProps[] = await client.fetch(
-        query,
-        {},
-        { next: { revalidate: 120 } }
-    );
-
+async function BestSelling({ bestselling }: { bestselling: ProductsProps[] }) {
     return (
         <>
             <h1 className="text-lg text-balance text-center font-bold my-4 uppercase">

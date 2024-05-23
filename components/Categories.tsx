@@ -1,20 +1,6 @@
-import { client } from "@/utils/sanityClient";
 import ShowCategories from "./ShowCategories";
 
-const query = `*[_type == "products"]{category}`;
-
-export type CategoryProps = {
-    category: string;
-};
-
-async function Categories() {
-    const response: CategoryProps[] = await client.fetch(
-        query,
-        {},
-        { next: { revalidate: 120 } }
-    );
-    const categories = [...new Set(response.map((item) => item.category))];
-
+async function Categories({ categories }: { categories: string[] }) {
     return (
         <div className="px-4 py-2">
             <h1 className="text-lg text-balance text-center font-bold my-4 uppercase">

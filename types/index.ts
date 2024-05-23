@@ -15,3 +15,13 @@ export type CartProps = {
     productPrice: number;
     productCategory: string;
 };
+
+export type BannerImage = {
+    _id: string;
+    name: string;
+    src: string;
+};
+
+export type CategoryProps = {
+    category: string;
+};

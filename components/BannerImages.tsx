@@ -1,29 +1,8 @@
-import { urlFor } from "@/utils/urlFor";
-import { client } from "@/utils/sanityClient";
+import { BannerImage } from "@/types";
 import ImageCarousel from "./ImageCarousel";
 
-const query = `*[_type == "banner"] | order(_createdAt asc){
-  "src": image.asset._ref, _id, name
-}`;
-
-export type BannerImage = {
-    _id: string;
-    name: string;
-    src: string;
-};
-
-async function BannerImages() {
-    const data: BannerImage[] = await client.fetch(
-        query,
-        {},
-        { next: { revalidate: 120 } }
-    );
-    const images: BannerImage[] = data.map((image) => ({
-        _id: image._id,
-        name: image.name,
-        src: urlFor(image.src).url(),
-    }));
-
+async function BannerImages({ data }: { data: string }) {
+    const images = JSON.parse(data) as BannerImage[];
     return (
         <div className="py-2 px-4">
             <ImageCarousel images={images} />
