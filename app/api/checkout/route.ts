@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
         return {
             quantity: item.productCount,
             price_data: {
-                currency: "INR",
+                currency: "inr",
                 product_data: {
                     name: item.productName,
                 },
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
                 allowed_countries: ["IN"],
             },
             line_items: lineItems,
-            currency: "INR",
+            currency: "inr",
             mode: "payment",
             success_url: `${headersList.get("origin")}/thank-you`,
             cancel_url: `${headersList.get("origin")}/`,
