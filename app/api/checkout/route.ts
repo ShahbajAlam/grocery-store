@@ -38,8 +38,6 @@ export async function POST(req: NextRequest) {
             cancel_url: `${headersList.get("origin")}/`,
         });
 
-        console.log(session);
-
         return NextResponse.json({ sessionId: session.id });
     } catch (err) {
         console.log(err);
