@@ -34,6 +34,7 @@ export async function POST(req: NextRequest) {
             line_items: lineItems,
             currency: "inr",
             mode: "payment",
+            billing_address_collection: "required",
             success_url: `${headersList.get("origin")}/thank-you`,
             cancel_url: `${headersList.get("origin")}/`,
         });
