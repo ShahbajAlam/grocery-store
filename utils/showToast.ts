@@ -16,7 +16,7 @@ export default function showToast({ type, message }: ToastProps) {
             textAlign: "center",
             textWrap: "balance",
             paddingInline: 10,
-            paddingBlock: 6,
+            paddingBlock: 8,
             fontSize: 16,
         },
     });

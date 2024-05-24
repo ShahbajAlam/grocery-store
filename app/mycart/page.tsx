@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import CartItems from "@/components/CartItems";
 import fetchCartDetails from "@/DB/fetchCartDetails";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import CheckOutButton from "@/components/CheckOutButton";
 
 export default async function ProfilePage() {
     const { isAuthenticated, getUser } = getKindeServerSession();
@@ -45,6 +46,8 @@ export default async function ProfilePage() {
             <h1 className="text-2xl text-balance text-center font-bold my-4 uppercase">
                 Subtotal = &#x20B9;{subtotal}
             </h1>
+
+            <CheckOutButton cart={JSON.stringify(cart)} />
         </div>
     );
 }
