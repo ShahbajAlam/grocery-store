@@ -30,7 +30,6 @@ export default function CheckOutButton({ cart }: { cart: string }) {
 
             const { sessionId } = await checkoutResponse.json();
             await stripe.redirectToCheckout({ sessionId });
-            
         } catch (error) {
             if (error instanceof Error)
                 showToast({ type: "error", message: error.message });

@@ -35,8 +35,8 @@ export async function POST(req: NextRequest) {
             currency: "inr",
             mode: "payment",
             billing_address_collection: "required",
-            success_url: `${headersList.get("origin")}/thank-you`,
-            cancel_url: `${headersList.get("origin")}/`,
+            success_url: `${headersList.get("origin")}/success`,
+            cancel_url: `${headersList.get("origin")}/mycart`,
         });
 
         return NextResponse.json({ sessionId: session.id });
