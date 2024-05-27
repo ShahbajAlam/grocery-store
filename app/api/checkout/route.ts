@@ -34,17 +34,12 @@ export async function POST(req: NextRequest) {
                     request_three_d_secure: "any",
                 },
             },
-            shipping_address_collection: {
-                allowed_countries: ["IN"],
-            },
             line_items: lineItems,
             currency: "inr",
             mode: "payment",
             success_url: `${headersList.get("origin")}/success`,
             cancel_url: `${headersList.get("origin")}/mycart`,
         });
-
-        console.log(session);
 
         return NextResponse.json({ sessionId: session.id });
     } catch (err) {
