@@ -47,7 +47,10 @@ export default async function ProfilePage() {
                 Subtotal = &#x20B9;{subtotal}
             </h1>
 
-            <CheckOutButton cart={JSON.stringify(cart)} />
+            <CheckOutButton
+                cart={JSON.stringify(cart)}
+                email={user?.email as string}
+            />
         </div>
     );
 }

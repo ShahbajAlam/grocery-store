@@ -6,7 +6,13 @@ import { CartProps } from "@/types";
 import showToast from "@/utils/showToast";
 import { loadStripe } from "@stripe/stripe-js";
 
-export default function CheckOutButton({ cart }: { cart: string }) {
+export default function CheckOutButton({
+    cart,
+    email,
+}: {
+    cart: string;
+    email: string;
+}) {
     const [loading, setLoading] = useState(false);
     const cartItems = JSON.parse(cart) as CartProps[];
 
@@ -25,7 +31,7 @@ export default function CheckOutButton({ cart }: { cart: string }) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ cartItems }),
+                body: JSON.stringify({ cartItems, email }),
             });
 
             const { sessionId } = await checkoutResponse.json();

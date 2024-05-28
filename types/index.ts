@@ -25,3 +25,21 @@ export type BannerImage = {
 export type CategoryProps = {
     category: string;
 };
+
+export type OrderProps = {
+    name: string;
+    email: string;
+    line1: string;
+    line2: string;
+    city: string;
+    state: string;
+    country: string;
+    pin: string;
+    total: number;
+    order: Array<{
+        quantity: number;
+        unit_amount: number;
+        amount_total: number;
+        description: string;
+    }>;
+};
