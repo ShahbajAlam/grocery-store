@@ -32,7 +32,7 @@ async function BestSelling({ bestselling }: { bestselling: ProductsProps[] }) {
                         </h2>
 
                         <Link
-                            href={`/${item.category}/${item._id}`}
+                            href={`/category/${item.category}/${item._id}`}
                             className="my-2"
                         >
                             <Button className="text-md">

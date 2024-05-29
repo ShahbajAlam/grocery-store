@@ -4,7 +4,7 @@ function ShowCategories({ categories }: { categories: string[] }) {
     return (
         <div className="grid gap-2 grid-cols-3">
             <Link
-                href="/all"
+                href="/category/all"
                 className="hover:brightness-150 hover:scale-105 duration-200"
             >
                 <div className="bg-[#352433] rounded-lg p-4 h-full flex justify-center items-center">
@@ -15,7 +15,7 @@ function ShowCategories({ categories }: { categories: string[] }) {
             </Link>
             {categories.map((item) => (
                 <Link
-                    href={`/${item}`}
+                    href={`category/${item}`}
                     key={item}
                     className="hover:brightness-150 hover:scale-105 duration-200"
                 >

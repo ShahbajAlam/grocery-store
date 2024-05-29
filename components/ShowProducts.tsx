@@ -62,7 +62,7 @@ function ShowProducts({
                         </div>
 
                         <Link
-                            href={`/${item.category}/${item._id}`}
+                            href={`/category/${item.category}/${item._id}`}
                             className="self-end my-2"
                         >
                             <Button className="font-semibold text-lg">
