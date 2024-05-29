@@ -1,14 +1,13 @@
 "use server";
 
-import { OrderProps } from "@/types";
 import connectDB from "./connection";
+import { OrderProps } from "@/types";
 import { Orders } from "./models/Orders";
 
 export default async function addOrder(orderDetails: OrderProps) {
-    const { order, ...other } = orderDetails;
     try {
         await connectDB();
-        await Orders.create({ ...other, order: order });
+        await Orders.create({ ...orderDetails });
     } catch (error) {
         console.log(error);
     }

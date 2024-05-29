@@ -18,6 +18,11 @@ export async function POST(req: NextRequest) {
                 },
                 unit_amount: item.productPrice * 100,
             },
+            adjustable_quantity: {
+                enabled: true,
+                minimum: 1,
+                maximum: 10,
+            },
         };
     });
 
