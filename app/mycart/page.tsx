@@ -17,7 +17,7 @@ export default async function ProfilePage() {
 
     if (cart.length === 0)
         return (
-            <h1 className="text-lg text-balance text-center font-bold mt-20 uppercase">
+            <h1 className="px-4 py-2 text-lg text-balance text-center font-bold mt-20 uppercase">
                 Your cart is empty, start adding some items
             </h1>
         );
