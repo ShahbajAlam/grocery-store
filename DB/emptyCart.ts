@@ -1,13 +1,13 @@
 "use server";
 
 import connectDB from "./connection";
-import { Orders } from "./models/Orders";
 import { revalidatePath } from "next/cache";
+import { Users } from "./models/UsersModel";
 
 export default async function emptyCart(email: string) {
     try {
         await connectDB();
-        await Orders.deleteMany({ email });
+        await Users.updateOne({ email }, { $set: { cart: [] } });
 
         revalidatePath("/mycart", "page");
     } catch (error) {

@@ -18,7 +18,11 @@ export default async function ProfilePage() {
     const orders = (await fetchOrders(user?.email as string)) as OrderProps[];
 
     if (orders?.length === 0)
-        return <h1>You have no order yet, start shopping</h1>;
+        return (
+            <h1 className="text-lg text-balance text-center font-bold my-4 mt-8 uppercase">
+                You have no order yet, start shopping
+            </h1>
+        );
 
     return (
         <div className="px-4 py-2">
@@ -36,7 +40,7 @@ export default async function ProfilePage() {
             <div className="grid grid-cols-1 gap-4">
                 {orders?.map((item) => (
                     <div
-                        key={item.email}
+                        key={item._id}
                         className="card w-full bg-[#352433] shadow-xl"
                     >
                         <div className="card-body">

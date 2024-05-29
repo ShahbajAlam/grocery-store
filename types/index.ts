@@ -27,6 +27,7 @@ export type CategoryProps = {
 };
 
 export type OrderProps = {
+    _id?: any;
     name: string;
     email: string;
     line1: string;
