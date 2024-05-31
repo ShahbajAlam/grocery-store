@@ -9,7 +9,7 @@ export default async function emptyCart(email: string) {
         await connectDB();
         await Users.updateOne({ email }, { $set: { cart: [] } });
 
-        revalidatePath("/mycart", "page");
+        revalidatePath("/mycart");
     } catch (error) {
         console.log();
     }

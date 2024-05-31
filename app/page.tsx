@@ -15,7 +15,7 @@ export default async function Home() {
     const data: BannerImage[] = await client.fetch(
         imageQuery,
         {},
-        { next: { revalidate: 300 } }
+        { next: { revalidate: 3600 } }
     );
 
     const images: BannerImage[] = data.map((image) => ({
@@ -27,14 +27,14 @@ export default async function Home() {
     const response: CategoryProps[] = await client.fetch(
         categoryQuery,
         {},
-        { next: { revalidate: 300 } }
+        { next: { revalidate: 3600 } }
     );
     const categories = [...new Set(response.map((item) => item.category))];
 
     const bestselling: ProductsProps[] = await client.fetch(
         bestsellingQuery,
         {},
-        { next: { revalidate: 300 } }
+        { next: { revalidate: 3600 } }
     );
 
     return (
