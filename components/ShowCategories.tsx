@@ -5,7 +5,7 @@ function ShowCategories({ categories }: { categories: string[] }) {
         <div className="grid gap-2 grid-cols-3">
             <Link
                 href="/category/all"
-                className="hover:brightness-150 hover:scale-105 duration-200"
+                className="hover:brightness-90 hover:scale-95 duration-200"
             >
                 <div className="bg-[#352433] rounded-lg p-4 h-full flex justify-center items-center">
                     <h2 className="text-center text-lg font-bold">
@@ -17,7 +17,7 @@ function ShowCategories({ categories }: { categories: string[] }) {
                 <Link
                     href={`category/${item}`}
                     key={item}
-                    className="hover:brightness-150 hover:scale-105 duration-200"
+                    className="hover:brightness-90 hover:scale-95 duration-200"
                 >
                     <div className="bg-[#352433] rounded-lg p-4">
                         <div className="w-full aspect-square">
