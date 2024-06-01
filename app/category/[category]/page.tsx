@@ -1,13 +1,20 @@
 import { client } from "@/utils/sanityClient";
 import ShowProducts from "@/components/ShowProducts";
 
-type CategoryParams = {
-    params: {
-        category: string;
-    };
-};
+export async function generateStaticParams() {
+    const categories = await client.fetch("*[_type == 'products']{category}");
+    const params = categories.map((item: any) => ({
+        category: item.category,
+    }));
+    params.unshift({ category: "all" });
+    return params;
+}
 
-export default async function CategoryPage({ params }: CategoryParams) {
+export default async function CategoryPage({
+    params,
+}: {
+    params: { category: string };
+}) {
     let productsQuery = "";
     let totalCountQuery = "";
 
