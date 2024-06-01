@@ -10,20 +10,7 @@ type ProductsParams = {
     };
 };
 
-export async function generateStaticParams() {
-    const query = `*[_type == "products"]{_id, name, price, category, description, "image": image.asset._ref}`;
-    const product: ProductsProps[] = await client.fetch(query);
-
-    return product.map((item) => ({
-        id: item._id,
-    }));
-}
-
-export default async function ProductPage({
-    params,
-}: {
-    params: { id: string };
-}) {
+export default async function ProductPage({ params }: ProductsParams) {
     const query = `*[_type == "products" && _id == "${params.id}"]{_id, name, price, category, description, "image": image.asset._ref}[0]`;
     const product: ProductsProps = await client.fetch(
         query,
