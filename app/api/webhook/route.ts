@@ -60,16 +60,9 @@ export async function POST(req: NextRequest) {
             });
 
             await emptyCart(email);
-
-            return NextResponse.json({
-                status: 200,
-                message: "Successful webhook call",
-            });
         }
+        return NextResponse.json({ message: "Webhook call is successful" });
     } catch (error) {
-        return NextResponse.json({
-            status: 500,
-            message: "Could not create the webhook event",
-        });
+        return NextResponse.json({ message: "Webhook call is failed" });
     }
 }
