@@ -1,12 +1,13 @@
-import { redirect } from "next/navigation";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import fetchOrders from "@/DB/fetchOrders";
 import { OrderProps } from "@/types";
+import { redirect } from "next/navigation";
+import fetchOrders from "@/DB/fetchOrders";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-export default async function ProfilePage() {
+export default async function OrdersPage() {
     const hour = new Date().getHours();
     const isMorning = hour >= 0 && hour < 12;
     const isAfternoon = hour >= 12 && hour < 18;
+    const isEvening = hour >= 18;
 
     const { isAuthenticated, getUser } = getKindeServerSession();
 
@@ -20,10 +21,9 @@ export default async function ProfilePage() {
     return (
         <div className="px-4 py-2">
             <h1 className="text-lg text-balance text-center font-bold my-4 uppercase">
-                Good{" "}
-                {isMorning ? "Morning" : isAfternoon ? "Afternoon" : "Evening"}
-                {", "}
-                {user?.given_name}
+                Good {isMorning && <span>Morning</span>}
+                {isAfternoon && <span>Afternoon</span>}
+                {isEvening && <span>Evening</span>}, {user?.given_name}
             </h1>
 
             {orders.length === 0 && (

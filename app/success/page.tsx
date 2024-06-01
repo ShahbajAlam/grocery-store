@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import Confetti from "react-confetti";
 import { useLayoutEffect, useState } from "react";
-import Link from "next/link";
 
 export default function SuccessPage() {
     const [dimension, setDimension] = useState({
@@ -31,10 +31,10 @@ export default function SuccessPage() {
                     <p>Thanks for shopping with us</p>
                     <div className="card-actions justify-end">
                         <Link
-                            href="/myprofile"
-                            className="bg-[#c59f60] text-black hover:bg-[#c59f60]/90 text-lg px-4 py-2 rounded-md font-semibold"
+                            href="/myorders"
+                            className="bg-[#c59f60] text-black hover:bg-[#c59f60]/90 text-lg px-4 py-2 rounded-md font-semibold mt-10"
                         >
-                            Go to my profile
+                            Go to my orders
                         </Link>
                     </div>
                 </div>

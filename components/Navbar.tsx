@@ -55,9 +55,9 @@ async function Navbar() {
                             My Account
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <Link href="/myprofile">
+                        <Link href="/myorders">
                             <DropdownMenuItem className="text-lg">
-                                Profile
+                                Orders
                             </DropdownMenuItem>
                         </Link>
                         <Link href="/mycart">
