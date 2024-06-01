@@ -9,7 +9,7 @@ export default async function addOrder(orderDetails: OrderProps) {
     try {
         await connectDB();
         await Orders.create({ ...orderDetails });
-        revalidatePath("/myprofile");
+        revalidatePath("/myorders");
     } catch (error) {
         console.log(error);
     }
