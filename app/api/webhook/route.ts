@@ -15,7 +15,8 @@ export async function POST(req: NextRequest) {
         event = stripe.webhooks.constructEvent(
             body,
             signature,
-            process.env.STRIPE_WEBHOOK_KEY as string
+            // process.env.STRIPE_WEBHOOK_KEY as string
+            "whsec_ECNZuBZ5LJ1zy5M8QHgu50a2Nmm7olNX"
         );
 
         if (event.type === "checkout.session.completed") {
