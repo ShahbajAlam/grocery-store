@@ -1,5 +1,4 @@
 import Stripe from "stripe";
-import { headers } from "next/headers";
 import addOrder from "@/DB/addOrder";
 import emptyCart from "@/DB/emptyCart";
 import { NextRequest, NextResponse } from "next/server";
@@ -9,7 +8,7 @@ export async function POST(req: NextRequest) {
     let event: Stripe.Event;
     const body = await req.text();
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
-    const signature = headers().get("stripe-signature") as string;
+    const signature = req.headers.get("stripe-signature") as string;
 
     try {
         event = stripe.webhooks.constructEvent(
