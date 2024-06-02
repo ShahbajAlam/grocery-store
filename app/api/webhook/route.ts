@@ -1,9 +1,9 @@
 import Stripe from "stripe";
 import addOrder from "@/DB/addOrder";
 import emptyCart from "@/DB/emptyCart";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
     let lineitems;
     let event: Stripe.Event;
     const body = await req.text();
