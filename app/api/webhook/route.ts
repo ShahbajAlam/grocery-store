@@ -63,6 +63,7 @@ export async function POST(req: NextRequest) {
         }
         return NextResponse.json({ message: "Webhook call is successful" });
     } catch (error) {
-        return NextResponse.json({ message: "Webhook call is failed" });
+        if (error instanceof Error)
+            return NextResponse.json({ message: error.message });
     }
 }
