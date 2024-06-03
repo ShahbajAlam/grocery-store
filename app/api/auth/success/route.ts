@@ -6,7 +6,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 export async function GET() {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
-    const REDIRECT_URL = `${process.env.KINDE_SITE_URL}/myprofile`;
+    const REDIRECT_URL = process.env.KINDE_SITE_URL;
 
     if (!user)
         return NextResponse.redirect(process.env.KINDE_SITE_URL as string);
