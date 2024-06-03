@@ -42,7 +42,7 @@ function ShowProducts({
             <h1 className="text-center text-lg font-bold my-4 uppercase">
                 {totalCount} products found
             </h1>
-            <div className="px-4 py-2 grid gap-3 grid-cols-1">
+            <div className="p-2 grid gap-3 grid-cols-1">
                 {productsToDisplay.map((item) => (
                     <div
                         key={item._id}
@@ -57,7 +57,7 @@ function ShowProducts({
                         </div>
 
                         <div className="w-full flex justify-between items-center text-3xl text-center font-bold">
-                            <h1>{item.name}</h1>
+                            <h1 className="text-left">{item.name}</h1>
                             <h2>&#x20B9;{item.price}</h2>
                         </div>
 

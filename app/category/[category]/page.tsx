@@ -2,7 +2,11 @@ import { client } from "@/utils/sanityClient";
 import ShowProducts from "@/components/ShowProducts";
 
 export async function generateStaticParams() {
-    const categories = await client.fetch("*[_type == 'products']{category}");
+    const categories = await client.fetch(
+        "*[_type == 'products']{category}",
+        {},
+        { next: { revalidate: 0 } }
+    );
     const params = categories.map((item: any) => ({
         category: item.category,
     }));
