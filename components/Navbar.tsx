@@ -65,7 +65,7 @@ async function Navbar() {
                                 Cart
                             </DropdownMenuItem>
                         </Link>
-                        <DropdownMenuItem className="text-lg">
+                        <DropdownMenuItem className="text-lg text-red-600">
                             <LogoutLink>Log Out</LogoutLink>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
