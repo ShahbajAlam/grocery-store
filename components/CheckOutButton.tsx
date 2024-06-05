@@ -46,8 +46,9 @@ export default function CheckOutButton({
 
     return (
         <Button
-            className="w-full text-md my-4 uppercase lg:w-[70%] lg:max-w-[900px] lg:mx-auto lg:block"
+            className="w-full text-md my-4 uppercase md:w-[80%] lg:w-[70%] lg:max-w-[900px] md:mx-auto md:block disabled:brightness-50"
             onClick={checkOut}
+            disabled={loading}
         >
             {loading ? (
                 <span className="loading loading-spinner text-neutral" />

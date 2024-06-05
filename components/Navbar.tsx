@@ -20,7 +20,7 @@ async function Navbar() {
     const isAuth = await isAuthenticated();
 
     return (
-        <nav className="flex justify-between items-center py-2 px-4 lg:w-[70%] lg:max-w-[900px] lg:mx-auto">
+        <nav className="flex justify-between items-center py-2 px-4 md:w-[80%] lg:w-[70%] lg:max-w-[900px] md:mx-auto">
             <Link href="/">
                 <Image
                     src="/logo.png"

@@ -15,7 +15,7 @@ function ImageCarousel({ images }: { images: BannerImage[] }) {
             opts={{
                 loop: true,
             }}
-            className="lg:w-[70%] lg:max-w-[900px] lg:mx-auto"
+            className="lg:w-[70%] lg:max-w-[900px] md:mx-auto md:w-[80%]"
         >
             <CarouselContent>
                 {images.map((image) => (

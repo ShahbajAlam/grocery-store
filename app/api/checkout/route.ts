@@ -2,6 +2,7 @@ import { CartProps } from "@/types";
 import { headers } from "next/headers";
 import initializeStripe from "@/utils/stripe";
 import { NextRequest, NextResponse } from "next/server";
+import { urlFor } from "@/utils/urlFor";
 
 export async function POST(req: NextRequest) {
     const headersList = headers();
@@ -14,7 +15,7 @@ export async function POST(req: NextRequest) {
                 currency: "inr",
                 product_data: {
                     name: item.productName,
-                    images: [item.productImage],
+                    images: [urlFor(item.productImage).url()],
                 },
                 unit_amount: item.productPrice * 100,
             },
@@ -42,7 +43,6 @@ export async function POST(req: NextRequest) {
             },
             success_url: `${headersList.get("origin")}/success`,
             cancel_url: `${headersList.get("origin")}/mycart`,
-            customer_creation: "always",
             billing_address_collection: "auto",
             customer_email: email,
         });

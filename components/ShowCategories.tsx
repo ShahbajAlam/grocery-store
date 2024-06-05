@@ -2,7 +2,7 @@ import Link from "next/link";
 
 function ShowCategories({ categories }: { categories: string[] }) {
     return (
-        <div className="grid gap-2 grid-cols-3 lg:w-[70%] lg:max-w-[900px] lg:mx-auto lg:gap-4 lg:grid-cols-4">
+        <div className="grid gap-2 grid-cols-3 md:w-[80%] lg:w-[70%] lg:max-w-[900px] md:mx-auto md:gap-4 lg:grid-cols-4">
             <Link
                 href="/category/all"
                 className="hover:brightness-90 hover:scale-95 duration-200"

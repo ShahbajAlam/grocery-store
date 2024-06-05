@@ -33,7 +33,7 @@ export default async function ProfilePage() {
                 My cart
             </h1>
 
-            <ul className="flex flex-col gap-3 rounded-lg lg:w-[70%] lg:max-w-[900px] lg:mx-auto">
+            <ul className="flex flex-col gap-3 rounded-lg md:w-[80%] lg:w-[70%] lg:max-w-[900px] md:mx-auto">
                 {cart.map((item) => (
                     <CartItems
                         key={item.productID}

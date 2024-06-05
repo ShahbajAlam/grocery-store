@@ -23,13 +23,13 @@ export default async function ProductPage({ params }: ProductsParams) {
     const user = await getUser();
 
     return (
-        <div className="px-4 py-2 lg:w-[70%] lg:max-w-[900px] lg:mx-auto lg:flex lg:gap-5">
-            <div className="bg-[#352433] rounded-xl w-full aspect-square p-14 my-3 lg:basis-1/2">
+        <div className="px-4 py-2 md:w-[80%] lg:w-[70%] lg:max-w-[900px] md:mx-auto lg:flex md:gap-5">
+            <div className="bg-[#352433] rounded-xl w-full aspect-square p-14 my-3 flex justify-center items-center lg:basis-1/2">
                 <img
                     src={urlFor(product.image).url()}
                     alt={product.name}
                     loading="lazy"
-                    className="w-full h-full object-contain"
+                    className="w-full aspect-square object-contain md:w-[80%] lg:w-full"
                 />
             </div>
 

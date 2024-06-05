@@ -24,7 +24,7 @@ export default function SuccessPage() {
                 height={dimension.height}
                 gravity={0.07}
             />
-            <div className="card w-[90%] bg-base-100 shadow-xl fixed left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] lg:w-[70%] lg:max-w-[900px] lg:mx-auto">
+            <div className="card w-[90%] bg-base-100 shadow-xl fixed left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] lg:w-[70%] lg:max-w-[900px] md:mx-auto md:w-[80%]">
                 <div className="card-body">
                     <h2 className="card-title">Success!!!</h2>
                     <p>Your order has been placed successfully</p>

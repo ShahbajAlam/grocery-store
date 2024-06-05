@@ -113,8 +113,9 @@ function AddToCartButton({ product, isAuth, user }: AddToCartButtonProps) {
             </div>
 
             <Button
-                className="w-full text-black hover:bg-[#c59f60]/90 text-lg px-4 py-2 rounded-md font-semibold my-4"
+                className="w-full text-black hover:bg-[#c59f60]/90 text-lg px-4 py-2 rounded-md font-semibold my-4 disabled:brightness-50"
                 onClick={handleAddToCart}
+                disabled={loading}
             >
                 {loading ? (
                     <span className="loading loading-spinner text-neutral" />
