@@ -4,19 +4,25 @@ import { client } from "@/utils/sanityClient";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import AddToCartButton from "@/components/AddToCartButton";
 
-type ProductsParams = {
+export async function generateStaticParams() {
+    const query = `*[_type == "products"]{_id, name, price, category, description, "image": image.asset._ref}`;
+    const product: ProductsProps[] = await client.fetch(query);
+    return product.map((item) => ({
+        category: item.category,
+        id: item._id,
+    }));
+}
+
+export default async function ProductPage({
+    params,
+}: {
     params: {
+        category: string;
         id: string;
     };
-};
-
-export default async function ProductPage({ params }: ProductsParams) {
+}) {
     const query = `*[_type == "products" && _id == "${params.id}"]{_id, name, price, category, description, "image": image.asset._ref}[0]`;
-    const product: ProductsProps = await client.fetch(
-        query,
-        {},
-        { next: { revalidate: 0 } }
-    );
+    const product: ProductsProps = await client.fetch(query);
 
     const { isAuthenticated, getUser } = getKindeServerSession();
     const isAuth = await isAuthenticated();
