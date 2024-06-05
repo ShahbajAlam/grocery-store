@@ -17,13 +17,13 @@ export default async function OrdersPage() {
     return (
         <div className="px-4 py-2">
             {orders.length === 0 && (
-                <h1 className="text-lg text-balance text-center font-bold my-4 mt-8 uppercase">
+                <h1 className="text-lg text-balance text-center font-bold my-4 mt-8 uppercase lg:text-xl">
                     You have no order yet, start shopping
                 </h1>
             )}
             {orders.length > 0 && (
                 <>
-                    <h1 className="text-lg text-balance text-center font-bold my-4 mt-8 uppercase">
+                    <h1 className="text-lg text-balance text-center font-bold my-4 mt-8 uppercase lg:text-xl">
                         {orders.length} orders found
                     </h1>
                     <ShowOrders orders={JSON.stringify(orders)} />

@@ -49,14 +49,15 @@ function CartItems({ data, email }: { data: string; email: string }) {
                         height={100}
                         loading="lazy"
                         alt={item.productName}
+                        className="lg:w-[150px] aspect-square"
                     />
                 </Link>
 
                 <div>
-                    <h2 className="text-lg font-bold">
+                    <h2 className="text-lg font-bold lg:text-xl">
                         {item.productName} (x{item.productCount})
                     </h2>
-                    <h2 className="text-lg font-bold">
+                    <h2 className="text-lg font-bold lg:text-xl">
                         &#x20B9;{item.productPrice * item.productCount}
                     </h2>
                 </div>

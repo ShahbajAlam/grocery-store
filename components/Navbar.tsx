@@ -20,7 +20,7 @@ async function Navbar() {
     const isAuth = await isAuthenticated();
 
     return (
-        <nav className="flex justify-between items-center py-2 px-4">
+        <nav className="flex justify-between items-center py-2 px-4 lg:w-[70%] lg:max-w-[900px] lg:mx-auto">
             <Link href="/">
                 <Image
                     src="/logo.png"
@@ -56,12 +56,12 @@ async function Navbar() {
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <Link href="/myorders">
-                            <DropdownMenuItem className="text-lg">
+                            <DropdownMenuItem className="text-lg cursor-pointer">
                                 Orders
                             </DropdownMenuItem>
                         </Link>
                         <Link href="/mycart">
-                            <DropdownMenuItem className="text-lg">
+                            <DropdownMenuItem className="text-lg cursor-pointer">
                                 Cart
                             </DropdownMenuItem>
                         </Link>

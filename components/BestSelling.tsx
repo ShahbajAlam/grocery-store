@@ -6,14 +6,14 @@ import { ProductsProps } from "@/types";
 async function BestSelling({ bestselling }: { bestselling: ProductsProps[] }) {
     return (
         <>
-            <h1 className="text-lg text-balance text-center font-bold my-4 uppercase">
+            <h1 className="text-lg text-balance text-center font-bold my-4 uppercase lg:text-xl">
                 Our bestselling products
             </h1>
-            <div className="px-4 py-2 grid gap-3 grid-cols-2">
+            <div className="px-4 py-2 grid gap-3 grid-cols-2 lg:w-[70%] lg:max-w-[900px] lg:mx-auto lg:gap-4 lg:grid-cols-3">
                 {bestselling.map((item) => (
                     <div
                         key={item._id}
-                        className="rounded-2xl p-2 bg-[#352433] flex flex-col gap-2 justify-between items-center"
+                        className="rounded-2xl p-2 bg-[#352433] flex flex-col gap-2 justify-between items-center hover:brightness-90 hover:scale-95 duration-200"
                     >
                         <div className="w-[50%] aspect-square flex justify-center items-center">
                             <img

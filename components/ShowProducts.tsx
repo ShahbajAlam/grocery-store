@@ -39,14 +39,14 @@ function ShowProducts({
 
     return (
         <>
-            <h1 className="text-center text-lg font-bold my-4 uppercase">
+            <h1 className="text-center text-lg font-bold my-4 uppercase lg:text-xl">
                 {totalCount} products found
             </h1>
-            <div className="p-2 grid gap-3 grid-cols-1">
+            <div className="p-2 grid gap-3 grid-cols-1 lg:w-[70%] lg:max-w-[900px] lg:mx-auto lg:grid-cols-2 lg:gap-5">
                 {productsToDisplay.map((item) => (
                     <div
                         key={item._id}
-                        className="rounded-2xl px-6 py-4 bg-[#352433] flex flex-col gap-2 justify-center items-center"
+                        className="rounded-2xl px-6 py-4 bg-[#352433] flex flex-col gap-2 justify-center items-center hover:brightness-90 hover:scale-95 duration-200"
                     >
                         <div className="w-[50%] aspect-square flex justify-center items-center">
                             <img

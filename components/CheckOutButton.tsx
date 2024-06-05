@@ -45,7 +45,10 @@ export default function CheckOutButton({
     };
 
     return (
-        <Button className="w-full text-md my-4 uppercase" onClick={checkOut}>
+        <Button
+            className="w-full text-md my-4 uppercase lg:w-[70%] lg:max-w-[900px] lg:mx-auto lg:block"
+            onClick={checkOut}
+        >
             {loading ? (
                 <span className="loading loading-spinner text-neutral" />
             ) : (

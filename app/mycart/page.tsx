@@ -17,7 +17,7 @@ export default async function ProfilePage() {
 
     if (cart.length === 0)
         return (
-            <h1 className="px-4 py-2 text-lg text-balance text-center font-bold mt-20 uppercase">
+            <h1 className="px-4 py-2 text-lg text-balance text-center font-bold mt-20 uppercase lg:text-xl">
                 Your cart is empty, start adding some items
             </h1>
         );
@@ -29,11 +29,11 @@ export default async function ProfilePage() {
 
     return (
         <div className="px-4 py-2">
-            <h1 className="text-lg text-balance text-center font-bold my-4 uppercase">
+            <h1 className="text-lg text-balance text-center font-bold my-4 uppercase lg:text-xl">
                 My cart
             </h1>
 
-            <ul className="flex flex-col gap-3 rounded-lg">
+            <ul className="flex flex-col gap-3 rounded-lg lg:w-[70%] lg:max-w-[900px] lg:mx-auto">
                 {cart.map((item) => (
                     <CartItems
                         key={item.productID}
@@ -43,7 +43,7 @@ export default async function ProfilePage() {
                 ))}
             </ul>
 
-            <h1 className="text-2xl text-balance text-center font-bold my-4 uppercase">
+            <h1 className="text-2xl text-balance text-center font-bold my-4 uppercase lg:text-xl lg:my-8">
                 Subtotal = &#x20B9;{subtotal}
             </h1>
 

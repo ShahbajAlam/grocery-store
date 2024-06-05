@@ -37,7 +37,7 @@ function ShowOrders({ orders }: { orders: string }) {
 
     return (
         <div>
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 gap-4 lg:w-[70%] lg:max-w-[900px] lg:mx-auto lg:grid-cols-2">
                 {ordersToDisplay?.map((item) => (
                     <SingleOrder key={item._id} item={item} />
                 ))}

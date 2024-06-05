@@ -15,12 +15,13 @@ function ImageCarousel({ images }: { images: BannerImage[] }) {
             opts={{
                 loop: true,
             }}
+            className="lg:w-[70%] lg:max-w-[900px] lg:mx-auto"
         >
             <CarouselContent>
                 {images.map((image) => (
                     <CarouselItem
                         key={image._id}
-                        className="w-full aspect-video rounded-2xl"
+                        className="w-full aspect-video rounded-2xl lg:aspect-[2/1]"
                     >
                         <img
                             src={image.src}

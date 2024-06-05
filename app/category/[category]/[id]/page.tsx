@@ -23,23 +23,29 @@ export default async function ProductPage({ params }: ProductsParams) {
     const user = await getUser();
 
     return (
-        <div className="px-4 py-2">
-            <div className="bg-[#352433] rounded-xl w-full aspect-square p-14 my-3">
+        <div className="px-4 py-2 lg:w-[70%] lg:max-w-[900px] lg:mx-auto lg:flex lg:gap-5">
+            <div className="bg-[#352433] rounded-xl w-full aspect-square p-14 my-3 lg:basis-1/2">
                 <img
                     src={urlFor(product.image).url()}
                     alt={product.name}
                     loading="lazy"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                 />
             </div>
 
-            <h1 className="text-4xl my-5 font-bold">{product.name}</h1>
+            <div className="lg:basis-1/2 lg:flex lg:flex-col lg:justify-between">
+                <h1 className="text-4xl my-5 font-bold">{product.name}</h1>
 
-            <h2 className="text-3xl font-bold">&#x20B9;{product.price}</h2>
+                <h2 className="text-3xl font-bold">&#x20B9;{product.price}</h2>
 
-            <p className="text-lg my-2">{product.description}</p>
+                <p className="text-lg my-2">{product.description}</p>
 
-            <AddToCartButton product={product} isAuth={isAuth} user={user} />
+                <AddToCartButton
+                    product={product}
+                    isAuth={isAuth}
+                    user={user}
+                />
+            </div>
         </div>
     );
 }
