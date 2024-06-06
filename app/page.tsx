@@ -1,5 +1,6 @@
 import { urlFor } from "@/utils/urlFor";
 import { client } from "@/utils/sanityClient";
+import Footer from "@/components/Footer";
 import Categories from "@/components/Categories";
 import BestSelling from "@/components/BestSelling";
 import BannerImages from "@/components/BannerImages";
@@ -42,6 +43,7 @@ export default async function Home() {
             <BannerImages data={JSON.stringify(images)} />
             <Categories categories={categories} />
             <BestSelling bestselling={bestselling} />
+            <Footer />
         </>
     );
 }

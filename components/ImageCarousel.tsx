@@ -11,7 +11,7 @@ import Autoplay from "embla-carousel-autoplay";
 function ImageCarousel({ images }: { images: BannerImage[] }) {
     return (
         <Carousel
-            plugins={[Autoplay({ delay: 3000 })]}
+            plugins={[Autoplay({ delay: 4000 })]}
             opts={{
                 loop: true,
             }}
