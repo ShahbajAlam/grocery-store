@@ -6,7 +6,11 @@ import AddToCartButton from "@/components/AddToCartButton";
 
 export async function generateStaticParams() {
     const query = `*[_type == "products"]{_id, name, price, category, description, "image": image.asset._ref}`;
-    const product: ProductsProps[] = await client.fetch(query);
+    const product: ProductsProps[] = await client.fetch(
+        query,
+        {},
+        { next: { revalidate: 0 } }
+    );
     return product.map((item) => ({
         category: item.category,
         id: item._id,
@@ -22,7 +26,11 @@ export default async function ProductPage({
     };
 }) {
     const query = `*[_type == "products" && _id == "${params.id}"]{_id, name, price, category, description, "image": image.asset._ref}[0]`;
-    const product: ProductsProps = await client.fetch(query);
+    const product: ProductsProps = await client.fetch(
+        query,
+        {},
+        { next: { revalidate: 0 } }
+    );
 
     const { isAuthenticated, getUser } = getKindeServerSession();
     const isAuth = await isAuthenticated();
