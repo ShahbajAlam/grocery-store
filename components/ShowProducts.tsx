@@ -7,6 +7,7 @@ import { urlFor } from "@/utils/urlFor";
 import { ProductsProps } from "@/types";
 import { useEffect, useState } from "react";
 import { useWishlist } from "@/contexts/WishlistContext";
+import AddToWishlistButton from "./AddToWishlistButton";
 
 function ShowProducts({
     products,
@@ -39,12 +40,6 @@ function ShowProducts({
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [page]);
 
-    const isInWishlist = (id: string) => {
-        const index = data?.products.findIndex((item) => item._id == id);
-        if (index == -1) return false;
-        return true;
-    };
-
     return (
         <>
             <h1 className="text-center text-lg font-bold my-4 uppercase lg:text-xl">
@@ -70,19 +65,7 @@ function ShowProducts({
                         </div>
 
                         <div className="w-full my-2 flex gap-5 justify-between items-center">
-                            <span
-                                role="button"
-                                className={`text-3xl ${isInWishlist(item._id) ? "text-red-600" : ""}`}
-                                onClick={() => {
-                                    if (isInWishlist(item._id)) {
-                                        data?.removeFromWishlist(item._id);
-                                    } else {
-                                        data?.addToWishlist(item);
-                                    }
-                                }}
-                            >
-                                &#10084;
-                            </span>
+                            <AddToWishlistButton item={item} />
 
                             <Link
                                 href={`/category/${item.category}/${item._id}`}

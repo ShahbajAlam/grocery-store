@@ -13,6 +13,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import WishlistIcon from "./WishlistIcon";
 
 async function Navbar() {
     const { isAuthenticated, getUser } = getKindeServerSession();
@@ -33,7 +34,7 @@ async function Navbar() {
 
             <div className="flex items-center gap-4">
                 <Link href="/wishlist">
-                    <span className="text-3xl text-red-600">&#10084;</span>
+                    <WishlistIcon />
                 </Link>
 
                 {!isAuth && (

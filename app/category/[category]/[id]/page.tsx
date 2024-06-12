@@ -3,6 +3,7 @@ import { ProductsProps } from "@/types";
 import { client } from "@/utils/sanityClient";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import AddToCartButton from "@/components/AddToCartButton";
+import AddToWishlistButton from "@/components/AddToWishlistButton";
 
 export async function generateStaticParams() {
     const query = `*[_type == "products"]{_id, name, price, category, description, "image": image.asset._ref}`;
@@ -48,7 +49,10 @@ export default async function ProductPage({
             </div>
 
             <div className="lg:basis-1/2 lg:flex lg:flex-col lg:justify-between">
-                <h1 className="text-4xl my-5 font-bold">{product.name}</h1>
+                <div className="flex justify-between items-center">
+                    <h1 className="text-4xl my-5 font-bold">{product.name}</h1>
+                    <AddToWishlistButton item={product} />
+                </div>
                 <h2 className="text-3xl font-bold">&#x20B9;{product.price}</h2>
                 <p className="text-lg my-2">{product.description}</p>
                 <AddToCartButton
