@@ -4,7 +4,7 @@ import addToCart from "@/DB/addToCart";
 import showToast from "@/utils/showToast";
 import { CartProps, ProductsProps } from "@/types";
 import { useWishlist } from "@/contexts/WishlistContext";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import SingleWishlistItem from "./SingleWishlistItem";
 
 type ShowWishlistProps = {

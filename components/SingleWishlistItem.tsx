@@ -1,24 +1,26 @@
 "use client";
 
-import { ProductsProps } from "@/types";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "./ui/button";
 import { urlFor } from "@/utils/urlFor";
 import { Trash2Icon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "./ui/button";
+import { ProductsProps } from "@/types";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { Dispatch, SetStateAction, useState } from "react";
 
-export default function SingleWishlistItem({
-    item,
-    handleMoveToCart,
-}: {
+type SingleWishlistItemProps = {
     item: ProductsProps;
     handleMoveToCart: (
         item: ProductsProps,
         setLoading: Dispatch<SetStateAction<boolean>>
     ) => void;
-}) {
+};
+
+export default function SingleWishlistItem({
+    item,
+    handleMoveToCart,
+}: SingleWishlistItemProps) {
     const data = useWishlist();
     const [loading, setLoading] = useState(false);
 
