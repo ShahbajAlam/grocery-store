@@ -40,7 +40,9 @@ function ShowProducts({
     }, [page]);
 
     const isInWishlist = (id: string) => {
-        return data?.products.some((item) => item._id == id);
+        const index = data?.products.findIndex((item) => item._id == id);
+        if (index == -1) return false;
+        return true;
     };
 
     return (
@@ -70,7 +72,7 @@ function ShowProducts({
                         <div className="w-full my-2 flex gap-5 justify-between items-center">
                             <span
                                 role="button"
-                                className={`text-3xl ${isInWishlist(item._id) && "text-red-600"}`}
+                                className={`text-3xl ${isInWishlist(item._id) ? "text-red-600" : ""}`}
                                 onClick={() => {
                                     if (isInWishlist(item._id)) {
                                         data?.removeFromWishlist(item._id);

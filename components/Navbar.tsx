@@ -33,7 +33,7 @@ async function Navbar() {
 
             <div className="flex items-center gap-4">
                 <Link href="/wishlist">
-                    <span className="text-4xl text-red-600">&#10084;</span>
+                    <span className="text-3xl text-red-600">&#10084;</span>
                 </Link>
 
                 {!isAuth && (
