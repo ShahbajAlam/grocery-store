@@ -1,3 +1,3 @@
 export default function WishlistIcon() {
-    return <span className="text-3xl text-red-600">&#10084;</span>;
+    return <img src="/heart.png" alt="Heart icon" width={40} height={40} />;
 }

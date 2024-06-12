@@ -7,7 +7,7 @@ type ToastProps = {
 
 export default function showToast({ type, message }: ToastProps) {
     toast[type](message, {
-        duration: 2500,
+        duration: 2000,
         id: Date.now().toString(),
         position: "top-center",
         style: {
@@ -15,7 +15,7 @@ export default function showToast({ type, message }: ToastProps) {
             fontWeight: "bold",
             textAlign: "center",
             textWrap: "balance",
-            paddingInline: 10,
+            paddingInline: 12,
             paddingBlock: 8,
             fontSize: 16,
         },
