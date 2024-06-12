@@ -28,7 +28,7 @@ const WishlistProvider = ({ children }: { children: ReactNode }) => {
     }, [products.length]);
 
     const addToWishlist = (product: ProductsProps) => {
-        const updatedProducts = [...products, product];
+        const updatedProducts = [product, ...products];
 
         setProducts(updatedProducts);
         if (typeof localStorage != "undefined") {
