@@ -30,47 +30,54 @@ async function Navbar() {
                     priority
                 />
             </Link>
-            {!isAuth && (
-                <LoginLink className="bg-[#c59f60] text-black hover:bg-[#c59f60]/90 text-lg px-4 py-2 rounded-md font-semibold">
-                    Log In
-                </LoginLink>
-            )}
 
-            {isAuth && (
-                <DropdownMenu>
-                    <DropdownMenuTrigger className="outline-none">
-                        <img
-                            src={user?.picture as string}
-                            width={50}
-                            height={50}
-                            alt="Profile Picture"
-                            className="rounded-full"
-                        />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                        className="p-5 rounded-xl mr-4"
-                        sideOffset={20}
-                    >
-                        <DropdownMenuLabel className="text-lg">
-                            My Account
-                        </DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <Link href="/myorders">
-                            <DropdownMenuItem className="text-lg cursor-pointer">
-                                Orders
+            <div className="flex items-center gap-4">
+                <Link href="/wishlist">
+                    <span className="text-4xl text-red-600">&#10084;</span>
+                </Link>
+
+                {!isAuth && (
+                    <LoginLink className="bg-[#c59f60] text-black hover:bg-[#c59f60]/90 text-lg px-4 py-2 rounded-md font-semibold">
+                        Log In
+                    </LoginLink>
+                )}
+
+                {isAuth && (
+                    <DropdownMenu>
+                        <DropdownMenuTrigger className="outline-none">
+                            <img
+                                src={user?.picture as string}
+                                width={50}
+                                height={50}
+                                alt="Profile Picture"
+                                className="rounded-full"
+                            />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                            className="p-5 rounded-xl mr-4"
+                            sideOffset={20}
+                        >
+                            <DropdownMenuLabel className="text-lg">
+                                My Account
+                            </DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <Link href="/myorders">
+                                <DropdownMenuItem className="text-lg cursor-pointer">
+                                    Orders
+                                </DropdownMenuItem>
+                            </Link>
+                            <Link href="/mycart">
+                                <DropdownMenuItem className="text-lg cursor-pointer">
+                                    Cart
+                                </DropdownMenuItem>
+                            </Link>
+                            <DropdownMenuItem className="text-lg text-red-600">
+                                <LogoutLink>Log Out</LogoutLink>
                             </DropdownMenuItem>
-                        </Link>
-                        <Link href="/mycart">
-                            <DropdownMenuItem className="text-lg cursor-pointer">
-                                Cart
-                            </DropdownMenuItem>
-                        </Link>
-                        <DropdownMenuItem className="text-lg text-red-600">
-                            <LogoutLink>Log Out</LogoutLink>
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            )}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                )}
+            </div>
         </nav>
     );
 }

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";
+import { WishlistProvider } from "@/contexts/WishlistContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +20,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Toaster />
-                <Navbar />
-                {children}
+                <WishlistProvider>
+                    <Toaster />
+                    <Navbar />
+                    {children}
+                </WishlistProvider>
             </body>
         </html>
     );

@@ -6,6 +6,7 @@ import Pagination from "./Pagination";
 import { urlFor } from "@/utils/urlFor";
 import { ProductsProps } from "@/types";
 import { useEffect, useState } from "react";
+import { useWishlist } from "@/contexts/WishlistContext";
 
 function ShowProducts({
     products,
@@ -14,6 +15,7 @@ function ShowProducts({
     products: ProductsProps[];
     totalCount: number;
 }) {
+    const data = useWishlist();
     const [page, setPage] = useState(1);
     const firstPage = 1;
     const lastPage = Math.ceil(totalCount / 10);
@@ -36,6 +38,10 @@ function ShowProducts({
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [page]);
+
+    const isInWishlist = (id: string) => {
+        return data?.products.some((item) => item._id == id);
+    };
 
     return (
         <>
@@ -61,14 +67,29 @@ function ShowProducts({
                             <h2>&#x20B9;{item.price}</h2>
                         </div>
 
-                        <Link
-                            href={`/category/${item.category}/${item._id}`}
-                            className="self-end my-2"
-                        >
-                            <Button className="font-semibold text-lg">
-                                See this product
-                            </Button>
-                        </Link>
+                        <div className="w-full my-2 flex gap-5 justify-between items-center">
+                            <span
+                                role="button"
+                                className={`text-3xl ${isInWishlist(item._id) && "text-red-600"}`}
+                                onClick={() => {
+                                    if (isInWishlist(item._id)) {
+                                        data?.removeFromWishlist(item._id);
+                                    } else {
+                                        data?.addToWishlist(item);
+                                    }
+                                }}
+                            >
+                                &#10084;
+                            </span>
+
+                            <Link
+                                href={`/category/${item.category}/${item._id}`}
+                            >
+                                <Button className="font-semibold text-lg">
+                                    See this product
+                                </Button>
+                            </Link>
+                        </div>
                     </div>
                 ))}
             </div>
