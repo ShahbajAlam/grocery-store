@@ -14,7 +14,7 @@ export default function AddToWishlistButton({ item }: { item: ProductsProps }) {
     return (
         <span
             role="button"
-            className={`text-3xl ${isInWishlist(item._id) ? "text-red-600" : ""}`}
+            className={`text-3xl ${isInWishlist(item._id) ? "text-red-600" : "text-yellow-700"}`}
             onClick={() => {
                 if (isInWishlist(item._id)) {
                     data?.removeFromWishlist(item._id);
