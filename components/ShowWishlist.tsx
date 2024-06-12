@@ -1,13 +1,70 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { urlFor } from "@/utils/urlFor";
+import addToCart from "@/DB/addToCart";
+import showToast from "@/utils/showToast";
+import { CartProps, ProductsProps } from "@/types";
 import { useWishlist } from "@/contexts/WishlistContext";
-import { Trash2Icon } from "lucide-react";
+import { Dispatch, SetStateAction, useState } from "react";
+import SingleWishlistItem from "./SingleWishlistItem";
 
-export default function ShowWishlist() {
+type ShowWishlistProps = {
+    email: string;
+    isAuth: boolean;
+};
+
+export default function ShowWishlist({ isAuth, email }: ShowWishlistProps) {
     const data = useWishlist();
+
+    const handleMoveToCart = async (
+        item: ProductsProps,
+        setLoading: Dispatch<SetStateAction<boolean>>
+    ) => {
+        if (!isAuth) {
+            showToast({
+                type: "error",
+                message: "Please log in to your account first",
+            });
+            return;
+        }
+
+        const cartItem: CartProps = {
+            productID: item._id,
+            productName: item.name,
+            productCount: 1,
+            productCategory: item.category,
+            productImage: item.image,
+            productPrice: item.price,
+        };
+
+        try {
+            setLoading(true);
+            const response = (await addToCart(email, cartItem)) as {
+                type: string | boolean;
+            };
+
+            if (response.type === true) {
+                showToast({
+                    type: "success",
+                    message: `${item.name} is added to the cart`,
+                });
+            } else if (response.type === false) {
+                showToast({
+                    type: "error",
+                    message: "Could not add to the cart",
+                });
+            } else {
+                showToast({
+                    type: "error",
+                    message: "Only 10 items are allowed in the cart once",
+                });
+            }
+        } catch (error) {
+            if (error instanceof Error)
+                showToast({ type: "error", message: error.message });
+        } finally {
+            setLoading(false);
+        }
+    };
 
     if (data?.products.length === 0)
         return (
@@ -24,40 +81,11 @@ export default function ShowWishlist() {
 
             <ul className="flex flex-col gap-3 rounded-lg md:w-[80%] lg:w-[70%] lg:max-w-[900px] md:mx-auto">
                 {data?.products.map((item) => (
-                    <li
+                    <SingleWishlistItem
                         key={item._id}
-                        className="flex justify-between items-center p-4 rounded-md bg-[#352433]"
-                    >
-                        <div className="flex justify-center items-center gap-4">
-                            <Link
-                                legacyBehavior
-                                href={`category/${item.category}/${item._id}`}
-                            >
-                                <Image
-                                    src={urlFor(item.image).url()}
-                                    width={100}
-                                    height={100}
-                                    loading="lazy"
-                                    alt={item.name}
-                                    className="lg:w-[150px] aspect-square"
-                                />
-                            </Link>
-
-                            <div>
-                                <h2 className="text-lg font-bold lg:text-xl">
-                                    {item.name}
-                                </h2>
-                            </div>
-                        </div>
-
-                        <Trash2Icon
-                            role="button"
-                            className="w-8 h-8"
-                            onClick={() => {
-                                data.removeFromWishlist(item._id);
-                            }}
-                        />
-                    </li>
+                        item={item}
+                        handleMoveToCart={handleMoveToCart}
+                    />
                 ))}
             </ul>
         </div>

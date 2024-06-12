@@ -40,7 +40,6 @@ function CartItems({ data, email }: { data: string; email: string }) {
         >
             <div className="flex justify-center items-center gap-4">
                 <Link
-                    legacyBehavior
                     href={`category/${item.productCategory}/${item.productID}`}
                 >
                     <Image
