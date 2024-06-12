@@ -27,24 +27,26 @@ export default function SingleWishlistItem({
     return (
         <li
             key={item._id}
-            className="flex justify-between items-stretch p-4 rounded-md bg-[#352433]"
+            className="flex flex-col p-4 rounded-md bg-[#352433]"
         >
-            <div className="flex justify-center items-center gap-4">
-                <Link href={`category/${item.category}/${item._id}`}>
-                    <Image
-                        src={urlFor(item.image).url()}
-                        width={100}
-                        height={100}
-                        loading="lazy"
-                        alt={item.name}
-                        className="lg:w-[150px] aspect-square"
-                    />
-                </Link>
+            <div className="flex justify-between items-center gap-4">
+                <div className="flex items-center gap-4">
+                    <Link href={`category/${item.category}/${item._id}`}>
+                        <Image
+                            src={urlFor(item.image).url()}
+                            width={100}
+                            height={100}
+                            loading="lazy"
+                            alt={item.name}
+                            className="lg:w-[150px] aspect-square"
+                        />
+                    </Link>
 
-                <h2 className="text-lg font-bold lg:text-xl">{item.name}</h2>
-            </div>
+                    <h2 className="text-lg font-bold lg:text-xl">
+                        {item.name}
+                    </h2>
+                </div>
 
-            <div className="flex flex-col justify-between items-end">
                 <Trash2Icon
                     role="button"
                     className="w-8 h-8"
@@ -52,15 +54,19 @@ export default function SingleWishlistItem({
                         data?.removeFromWishlist(item._id);
                     }}
                 />
-
-                <Button
-                    onClick={() => handleMoveToCart(item, setLoading)}
-                    disabled={loading}
-                    className="w-full text-black hover:bg-[#c59f60]/90 text-lg px-4 py-2 rounded-md font-semibold disabled:brightness-50"
-                >
-                    Move to cart
-                </Button>
             </div>
+
+            <Button
+                onClick={() => handleMoveToCart(item, setLoading)}
+                disabled={loading}
+                className="text-black hover:bg-[#c59f60]/90 text-lg px-4 py-2 rounded-md font-semibold disabled:brightness-50 self-end"
+            >
+                {loading ? (
+                    <span className="loading loading-spinner text-neutral" />
+                ) : (
+                    "Move to cart"
+                )}
+            </Button>
         </li>
     );
 }
