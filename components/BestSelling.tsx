@@ -13,7 +13,7 @@ async function BestSelling({ bestselling }: { bestselling: ProductsProps[] }) {
                 {bestselling.map((item) => (
                     <div
                         key={item._id}
-                        className="rounded-2xl p-2 bg-[#352433] flex flex-col gap-2 justify-between items-center hover:brightness-90 hover:scale-95 duration-200"
+                        className="rounded-2xl p-2 bg-[#352433] flex flex-col gap-2 justify-between items-center"
                     >
                         <div className="w-[50%] aspect-square flex justify-center items-center">
                             <img

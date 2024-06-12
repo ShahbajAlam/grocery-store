@@ -46,7 +46,7 @@ function ShowProducts({
                 {productsToDisplay.map((item) => (
                     <div
                         key={item._id}
-                        className="rounded-2xl px-6 py-4 bg-[#352433] flex flex-col gap-2 justify-center items-center hover:brightness-90 hover:scale-95 duration-200"
+                        className="rounded-2xl px-6 py-4 bg-[#352433] flex flex-col gap-2 justify-center items-center duration-200"
                     >
                         <div className="w-[50%] aspect-square flex justify-center items-center md:w-[40%] lg:w-[50%]">
                             <img
