@@ -9,7 +9,7 @@ async function BestSelling({ bestselling }: { bestselling: ProductsProps[] }) {
             <h1 className="text-lg text-balance text-center font-bold my-4 uppercase lg:text-xl">
                 Our bestselling products
             </h1>
-            <div className="px-4 py-2 grid gap-3 grid-cols-2 md:w-[80%] lg:w-[70%] lg:max-w-[900px] md:mx-auto md:gap-4 lg:grid-cols-3">
+            <div className="grid gap-3 grid-cols-2 md:w-[80%] lg:w-[70%] lg:max-w-[900px] md:mx-auto md:gap-4 lg:grid-cols-3">
                 {bestselling.map((item) => (
                     <div
                         key={item._id}
